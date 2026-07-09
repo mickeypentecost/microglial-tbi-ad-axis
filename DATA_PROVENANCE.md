@@ -92,3 +92,12 @@ manner.
   random_state 0; matched-random null seed 0).
 - Coordinate builds are explicit throughout (GRCh38 for GWAS/peaks/genes; hg19
   for the 1000G S-LDSC reference).
+
+## Resolution-arm bulk RNA-seq (added: causal/perturbable arm)
+
+- **GSE153873** — human AD hippocampus bulk RNA-seq (12 AD / 10 aged / 8 young). NCBI GEO, open.
+  STAR gene-count matrix (`GSE153873_summary_count.star.txt.gz`). Used for resolution-gene
+  detection-rescue and module-coherence-vs-null.
+- **GSE276182** — mouse sorted astrocyte + microglia bulk RNA-seq ± traumatic brain injury
+  (control/EE/KD genotypes). NCBI GEO, open. Gene-count matrix (`GSE276182_gene_count_TBI.txt.gz`).
+  Used for the astrocytic CD44-relay injury response (CD44/SPP1/HAS2 up, TSG-6/TNFAIP6 down).

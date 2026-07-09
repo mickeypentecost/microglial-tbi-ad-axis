@@ -72,6 +72,18 @@ and how to flip it). Three new analytical arms, each from public data or models 
    the SPI1/CEBPB backbone the perturbation identifies as permissive. Resilient ε4 carriers sit
    earlier in the transition (p=0.051). **Novel** — ties the switch to a temporal order and
    independently corroborates the perturbation arm (two methods, one NFκB).
+7. **The resolution arm is measurable in bulk, and TBI disengages it at the CD44 hub.** The brake
+   genes (TSG-6/TNFAIP6, HAS1-3, HYAL1/2) are effectively invisible in snRNA (~0.3% detection) but
+   detected in **87–100%** of human AD bulk hippocampus samples (GSE153873) — "resolution
+   insufficiency" was partly an *assay artifact*. With the hyaluronidases and CD44 receptor added,
+   the HA-matrix module is genuinely coherent (0.14 vs null 0.03, 94th percentile; the accelerator
+   arm is far more coherent in bulk, 0.37, than in snRNA, 0.074). In sorted mouse cells after TBI
+   (GSE276182), **astrocytes** raise the CD44 receptor (+1.04, p=0.016), the SPP1/OPN accelerator
+   ligand (+4.6, p=0.016), and HA synthesis (HAS2 +0.76, p=0.016) while **suppressing the
+   pro-resolving TSG-6 ligand (TNFAIP6 −0.34, p=0.032)** — receptor up, brake ligand down: the
+   disengaged brake, measured directly in the cell type and genes single-nucleus cannot see.
+   **Novel** — converts "the brake is off" from a literature claim into a fresh, modality-matched
+   measurement.
 
 ---
 
@@ -140,9 +152,14 @@ from GWAS → enhancer → deliverable.
    of MEF2C/CEBPB/CD44 in **human iPSC-microglia**.
 4. **Two-hit epidemiology** — does TBI × accelerator-genotype predict faster decline in humans?
    → **ADNI-DoD** (see `adni_dod_sidequest.md`, run separately).
-5. **Spatial context** — is the accelerator microglia near tau vs plaque? → AsymAD / PIG spatial
-   transcriptomics.
-6. **Power** — resilience tests are directional at n=9 vs 16; the incoming ~100-sample cohort
+5. **Spatial context** — is the accelerator microglia physically adjacent to the CD44-high
+   astrocyte, around plaques? The CD44 relay is a cell-cell event snRNA/bulk cannot localize.
+   → 10x Visium/Xenium human AD, MERFISH 5xFAD, mouse CCI Visium (next-session arm).
+6. **Resolution-arm direction in a well-powered human set** — bulk closes the *detection* and
+   *coherence* gap (finding 7 above) and the mouse shows the CD44-hub disengagement, but the human
+   AD-vs-control direction is underpowered in GSE153873 (n=12 vs 10; only SPP1 reaches p=0.038). A
+   larger bulk cohort (Mayo/MSBB-class) would settle the human brake direction.
+7. **Power** — resilience tests are directional at n=9 vs 16; the incoming ~100-sample cohort
    moves them to conclusive.
 
 See `data_inventory.md` for the full catalog of datasets pulled and identified.
