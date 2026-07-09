@@ -25,8 +25,27 @@ an OSI-approved (MIT) license.
 *Accelerator genes sit high on **both** the environmental axis (installed by
 TBI and AD in single-nucleus data) and the genetic axis (carrying AD risk
 variants in microglial enhancers). The upstream microglial switches —* TREM2,
-APOE, TYROBP *— carry the genetic load; the downstream effectors —* SPP1/OPN,
-CST7, GPNMB *— are installed environmentally.*
+APOE, TNF *— carry the genetic load (≥3 AD risk variants each); the effectors —*
+SPP1/OPN, the C1q complement genes, C3, TLR2 *— are installed environmentally
+(up in AD and/or TBI microglia, few common risk variants).*
+
+---
+
+## Are the gene modules real, or just a curated guess?
+
+The accelerator/resolution axis is **hypothesis-driven** — defined *a priori* from
+the DAM/neuroinflammation literature and the pro-resolving TSG-6→CD44 mechanism,
+**not** derived from the datasets it is tested on. Two independent robustness
+checks confirm it holds up, and one honest limitation is stated plainly:
+
+![Module validation](figures/module_validation.png)
+
+*The accelerator genes co-vary as a genuine module (beating 100% of
+detection-matched random sets) and re-emerge in unsupervised NMF; the module is
+organized around **CD44**, the receptor where the accelerator ligand SPP1/OPN and
+the brake ligand TSG-6 compete. The resolution arm is near-undetectable in
+single-nucleus RNA — its quantification requires bulk RNA-seq
+(`results/refined_accelerator_geneset.csv`).*
 
 ---
 
@@ -45,14 +64,15 @@ Supporting GWAS locus map: `figures/gwas_axis_loci.png`.
 ## Why this matters
 
 Epidemiology links moderate-to-severe TBI to elevated dementia risk, but the
-*mechanism* has been a black box. The companion **CSGIA** analysis (cross-species
-single-nucleus + proteomics) shows TBI and AD engage the same microglial
-accelerator program with an insufficient resolution response. This repository
-adds the missing causal direction from the genetic side: **the human genetic
-architecture of AD is concentrated in exactly the microglial regulatory elements
-that control the accelerator genes TBI turns on.** Two independent kinds of
-evidence — an environmental perturbation and inherited risk — point at the same
-molecular axis, which is what a shared, targetable mechanism should look like.
+*mechanism* has been a black box. Here we show, from public data computed during
+the event, that TBI and AD engage the **same microglial accelerator program**:
+single-nucleus microglia from human AD (SEA-AD) and mouse TBI (CEREBRI) both
+up-regulate the accelerator genes, while the pro-resolving arm stays flat — and
+the genetic side supplies the causal direction: **the human genetic architecture
+of AD is concentrated in exactly the microglial regulatory elements that control
+those accelerator genes.** Two independent kinds of evidence — an environmental
+perturbation and inherited risk — point at the same molecular axis, which is what
+a shared, targetable mechanism should look like.
 
 ---
 
@@ -120,7 +140,7 @@ See **`DATA_PROVENANCE.md`** for exact URLs, accessions, versions, and licenses.
 - **AD GWAS:** Bellenguez C, et al. *Nat Genet* 2022. GWAS Catalog GCST90027158 (PMID 35379992).
 - **Microglial ChromBPNet models + scATAC peaks:** Corces MR, et al. *Nat Genet* 2020 (PMID 33106633); model weights from `corceslab/variantapp`.
 - **S-LDSC:** Finucane HK, et al. *Nat Genet* 2015; Gazal S, et al. baseline-LD v2.2. Software: `bulik/ldsc` (GPL-3.0), Python-3 port included.
-- **Fluid-proteomics reference (companion arm):** Ali M, et al. *Neuron* 2026 (PMID 41916283).
+- **Environmental-arm single-nucleus data:** SEA-AD MTG (Allen Institute) and CEREBRI mouse TBI (GEO GSE269748).
 
 This work was produced for the *Built with Claude — Life Sciences* hackathon
 (Research Track). All analysis was performed during the event on public data.

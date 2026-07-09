@@ -60,19 +60,21 @@ and derived annotations are included or scripted for download.
 - **License:** reference data are open research resources; cite Finucane et al.
   2015 (*Nat Genet*) and Gazal et al. 2017.
 
-## 4. Companion single-nucleus + proteomics data (CSGIA arm — referenced, not in this repo)
+## 4. Environmental-arm single-nucleus data
 
-The environmental-arm scores in `results/crossarm_convergence.csv` derive from
-the companion CSGIA analysis over these public datasets:
+The environmental-arm scores in `results/crossarm_convergence.csv` were computed
+**during the event**, directly from two public single-nucleus datasets — a simple
+per-sample pseudobulk (mean log-CPM, case vs control) on the microglia, with no
+reliance on any prior differential-expression analysis:
 
 | Dataset | Accession | Role |
 |---------|-----------|------|
-| SEA-AD MTG | Allen Institute SEA-AD | human AD snRNA (microglia/astrocyte) |
-| Lau et al. | GEO **GSE157827** | human AD snRNA |
-| Garza et al. (human TBI) | GEO **GSE209552** | acute human TBI snRNA |
-| CEREBRI (mouse TBI) | GEO **GSE269748** | mouse TBI time-course |
-| Zhou / 5xFAD | GEO **GSE140511** | mouse AD model |
-| Ali et al. fluid proteomics | PMID **41916283** (*Neuron* 2026) | CSF/plasma multi-dementia |
+| SEA-AD MTG | Allen Institute SEA-AD | human AD snRNA — accelerator installation (84 AD vs 5 control donors) |
+| CEREBRI (mouse TBI) | GEO **GSE269748** | mouse TBI snRNA — accelerator installation (26 TBI vs 10 control) |
+
+Robustness checks in `figures/module_validation.png` (coherence-vs-null, NMF
+recovery, refined gene set) were computed on the SEA-AD microglia in the same
+manner.
 
 ## 5. Gene coordinates
 
@@ -87,6 +89,6 @@ the companion CSGIA analysis over these public datasets:
 - All network fetches target allowlisted public endpoints (EBI, Zenodo, UCSC
   REST, Ensembl REST, GitHub).
 - Random seeds fixed where stochastic (MAF-matched permutation seed 0; NMF
-  random_state 0 in the companion arm).
+  random_state 0; matched-random null seed 0).
 - Coordinate builds are explicit throughout (GRCh38 for GWAS/peaks/genes; hg19
   for the 1000G S-LDSC reference).
