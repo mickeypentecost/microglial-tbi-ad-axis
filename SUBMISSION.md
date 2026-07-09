@@ -42,9 +42,10 @@ literature for the accelerator arm (SPP1, TREM2, APOE, complement, GPNMB), and t
 pro-resolving TSG-6→CD44 mechanism for the brake arm. It was **not** derived from
 the datasets we test it on, so there is no circularity between definition and result.
 
-Because a curated gene set invites confirmation-bias concerns, the analysis plan
-pre-specified two **independent robustness checks** on the human AD microglia
-(SEA-AD), which we ran here, and we report one honest limitation:
+Because a curated gene set invites confirmation-bias concerns, we ran two
+**independent robustness checks** on the human AD microglia (SEA-AD) — the
+unsupervised-factorization check was pre-specified in the analysis plan; the
+coherence-vs-null test we added here — and we report one honest limitation:
 
 - **Coherence** — the accelerator genes co-vary as a genuine module, beating
   **100% of detection-matched random gene sets** (mean pairwise r = 0.074 vs null
@@ -57,7 +58,7 @@ pre-specified two **independent robustness checks** on the human AD microglia
   **CD44**, which gates TLR2/NF-κB (itself an accelerator gene). CD44 belongs in
   the axis by function as the integrating node, not by expression level.
 - **An honest limitation** — the resolution arm is **near-undetectable in
-  single-nucleus RNA** (TNFAIP6, HAS1/2/3, IL10 all < 1% of microglia), so its
+  single-nucleus RNA** (TNFAIP6, HAS1/2/3 all < 1% of microglia; IL10 ~2%), so its
   "disengagement" is partly a measurement gap. Quantifying the brake properly
   requires **bulk RNA-seq**, where CD44 rises up to ~25-fold after controlled
   cortical impact (PMID 25309501). This is a concrete next experiment, not a
