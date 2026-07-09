@@ -86,7 +86,7 @@ a shared, targetable mechanism should look like.
 ├── thesis.md                     # full causal argument + axis gene modules
 ├── corces_model_provenance.md    # ChromBPNet model source, cluster→cell-type map
 ├── requirements.txt              # Python environments (analysis + ChromBPNet + LDSC)
-├── figures/                      # 5 publication figures (PNG, 300 dpi)
+├── figures/                      # publication figures (PNG, 300 dpi)
 ├── results/                      # all result tables (CSV)
 ├── data/                         # axis targets + enhancer/annotation BEDs (GRCh38 + hg19)
 ├── code/                         # scoring + LD-score + munge scripts
@@ -104,6 +104,18 @@ a shared, targetable mechanism should look like.
 - **`chrombpnet_allelic_scores.csv`** — allelic effect (lfc, JSD) for 3,356 SNVs; **`chrombpnet_top_variants.csv`** — ranked chromatin-disruptors.
 - **`sldsc_results.csv`** — partitioned-heritability enrichment for 4 annotations (all-microglia, accelerator, DAM, resolution).
 - **`crossarm_convergence.csv`** — per-gene environmental (log₂FC) vs genetic (risk-variant load) scores.
+
+### Causal / perturbable arm
+
+- **`novelty_synthesis.md`** — the full causal narrative: convergence → causation/direction → perturbation/mechanism, plus the drug-target rationale.
+- **`caqtl_formal_coloc.csv`** / **`caqtl_enhancer_coloc.csv`** — primary-microglia (Kosoy/Raj, n=150) caQTL vs AD-GWAS; enhancer-level dissection (effectors vs inherited-risk loci) and formal shared-SNP coloc.
+- **`moloc_threeway.csv`** — three-way moloc: caQTL ∩ eQTL ∩ GWAS (both molecular QTLs from primary microglia); caQTL↔eQTL PP4 vs eQTL/caQTL↔AD PP4.
+- **`caqtl_ep_ad_loops.csv`** — AD-locus variants in microglial enhancers physically looping (ABC/Hi-C) to axis genes.
+- **`coloc_mr_results.csv`** — cell-type-matched myeloid (macrophage/monocyte) eQTL vs AD-GWAS coloc.
+- **`full_circuit.csv`** — integrated per-gene circuit (AD-risk / caQTL / E-P loop / expression layers).
+- **`insilico_perturbation.csv`** / **`cebpb_perturbation.csv`** — ChromBPNet motif-ablation Δaccessibility for NFκB, MEF2, SPI1, CEBPB on the 754 axis enhancers.
+- **`pseudotime_drivers.csv`** — diffusion-pseudotime gene/TF trends across the homeostatic→accelerator transition.
+- **`adni_dod_sidequest.md`** — standalone prompt for the two-hit (TBI × APOE) clinical test, to run under separate data governance.
 
 ---
 

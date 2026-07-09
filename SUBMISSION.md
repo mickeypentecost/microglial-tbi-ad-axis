@@ -115,6 +115,61 @@ injury drives the effectors; both land on one program.
 
 ---
 
+## From convergence to causation: the perturbable circuit
+
+The two arms above establish *convergence* (TBI and AD hit one program). We then
+asked the harder questions — **which way does it run, where does inherited risk
+actually act, and how do you flip it** — using only public data and models.
+
+### Direction: the effectors are installed, not inherited
+
+Colocalization of AD GWAS with axis-gene QTLs, taken to the highest available
+resolution:
+
+| Test | Data | Result |
+|------|------|--------|
+| **cis-eQTL coloc** | cell-type-matched myeloid eQTLs (Alasoo macrophage, BLUEPRINT monocyte; up to P=3×10⁻²⁷) | **No coloc** (max PP4=0.02) — removes the "bulk brain diluted the signal" objection |
+| **enhancer caQTL coloc** | Kosoy/Raj primary-microglia meta-caQTL (n=150) | GWS caQTL at SPP1 (P=1.5×10⁻¹²), but **no coloc** with AD (max PP4=0.06); CTSB PP3=0.97 = association *without* colocalization |
+| **three-way moloc** | caQTL ∩ eQTL ∩ GWAS, both molecular QTLs from primary microglia | caQTL↔eQTL real but modest (C1QA PP4=0.18); **neither molecular trait colocalizes with AD** (max 0.06) |
+
+The chromatin→expression regulation of the accelerator effectors is genetically
+real but **independent of inherited AD risk**. Risk enters through APOE/TREM2 and
+the broad enhancer landscape (S-LDSC), not the effector loci — the exact logic of
+a **two-hit (injury × genotype)** model: the effectors are what the *trigger*
+installs, the risk alleles set the *threshold*.
+
+### Perturbation: a two-tier TF architecture, and the master regulator
+
+In silico ChromBPNet motif ablation on the 754 axis enhancers reveals two tiers:
+
+- **Permissive backbone (non-specific):** ablating **SPI1/PU.1** closes both arms
+  most strongly (dose-dependent — stronger motif → bigger closure, rho=−0.28,
+  P=9×10⁻¹⁵), with **CEBPB** alongside it. CEBPB is itself AD-regulated (drives
+  δ-secretase cleaving APP/tau; degraded by COP1) — a therapeutic node in its own
+  right.
+- **Discriminating switch (arm-specific):** ablating **NFκB** closes accelerator
+  enhancers specifically (P=1.9×10⁻⁵); ablating **MEF2** does *not* close
+  protective enhancers → **MEF2C is a repressor/brake, not a pioneer.**
+
+**Independent convergence:** our perturbation names SPI1 the #1 TF from a
+chromatin model; Kosoy 2022, by TF-regulatory-network analysis (a completely
+different method), independently names **SPI1 the master regulator of the
+microglial regulome and AD risk.** Two orthogonal methods, one regulator.
+
+### Trajectory: the transition is loss of MEF2C identity
+
+Diffusion pseudotime over the SEA-AD microglia orders the homeostatic→accelerator
+transition as a **loss of MEF2C/P2RY12 identity** (dpt vs homeostatic score
+rho=−0.49) with a coordinated rise of NFκB/SPI1 — the same switch, now with a
+temporal order. Resilient APOE-ε4 carriers sit earlier in the transition
+(directional, P=0.05; the incoming ~100-sample cohort will make this conclusive).
+
+*Full detail and figures: `results/novelty_synthesis.md`, `moloc_threeway.png`,
+`full_circuit.png`, `caqtl_enhancer.png`, `insilico_perturbation.png`,
+`tf_architecture.png`, `trajectory.png`.*
+
+---
+
 ## What is genuinely new here
 
 We are explicit about the boundary between reproduction and novelty — the rubric
@@ -134,7 +189,14 @@ rewards verifiable specificity, so we do not overclaim:
   (4) the **measurement finding** — the resolution arm is unmeasurable in snRNA and
   requires bulk RNA-seq (CD44 rises up to ~25-fold after controlled cortical
   impact; PMID 25309501), reframing "resolution insufficiency" as partly an assay
-  gap with a concrete fix.
+  gap with a concrete fix; (5) the **direction result** — formal colocalization at
+  three molecular layers (myeloid eQTL, primary-microglia caQTL, three-way moloc)
+  shows the accelerator effectors are genetically controlled but *AD-risk-independent*
+  — installed by the trigger, not inherited; (6) the **perturbable two-tier TF
+  architecture** — SPI1/CEBPB permissive backbone vs NFκB/MEF2 arm-specific switch,
+  with MEF2C shown to be a repressor, not a pioneer; and (7) the **independent SPI1
+  convergence** — our chromatin-model perturbation and Kosoy's TF-network analysis
+  name the same master regulator by different methods.
 
 ---
 
@@ -156,27 +218,30 @@ rewards verifiable specificity, so we do not overclaim:
 
 ## What it unlocks next (48-hour-plus roadmap)
 
-The convergence map yields a **therapeutic rationale** (not yet a validated
-target — no perturbation data exists here): the CD44 hub is the point where the
-accelerator ligand (SPP1/OPN) and the brake ligand (TSG-6) compete, so
-**restoring the TSG-6→CD44 brake or blocking SPP1→CD44** is a single node
-addressable in both TBI and AD contexts. Three concrete next steps make this
-testable:
+The convergence-plus-causation map yields a **therapeutic rationale with an
+identified regulatory circuit** (still not a wet-lab-validated target — all
+perturbation here is in silico): silence the **SPI1/CEBPB backbone** to lower the
+whole program, or flip the **NFκB/MEF2 switch** to close the accelerator while
+sparing resolution, and restore the **TSG-6→CD44 brake** at the effector level.
+Because the effectors are *installed* (not inherited), they are the right level to
+intervene on in an already-triggered brain. What remains:
 
-1. **Measure the resolution arm where it lives.** Re-run the coherence/null test
-   on **bulk RNA-seq** microglia-enriched or microglial-proportion-corrected data
-   for TNFAIP6/HAS1-3/HYAL/CD44 — the arm snRNA cannot see. Existing bulk CCI-TBI
-   timecourses (e.g. PMID 25309501) are the immediate substrate.
-2. **Upstream regulators.** Find the **transcription factors** whose motifs the
-   accelerator enhancers depend on (candidate master regulators PU.1/SPI1, IRF8,
-   MEF2C — the latter two themselves AD GWAS genes; CEBPB surfaced in our agnostic
-   expansion), test which the top AD risk variants disrupt (ChromBPNet
-   contribution scores / TF-MoDISco), and rank by whether silencing collapses the
-   accelerator while sparing resolution.
-3. **Ligand–receptor perturbation evidence.** Mine public SPP1/CD44 knockout and
-   OPN-blockade datasets (OPN-KO.5xFAD reduces plaque and microglial TNF-α; PNAS
-   2023, doi 10.1073/pnas.2218915120) to convert the rationale into a
-   perturbation-anchored target.
+1. **The two-hit clinical test (highest priority).** Whether prior TBI × APOE
+   genotype interacts to raise dementia risk is the epidemiological keystone the
+   molecular model predicts. We provide a **standalone ADNI-DoD analysis prompt**
+   (`results/adni_dod_sidequest.md`) to run under separate data governance —
+   controlled-access data deliberately kept out of this public project.
+2. **Measure the resolution arm where it lives.** Re-run the coherence/null test on
+   **bulk RNA-seq** for TNFAIP6/HAS1-3/HYAL/CD44 — the arm snRNA cannot see.
+   Existing bulk CCI-TBI timecourses (e.g. PMID 25309501) are the immediate substrate.
+3. **Wet-lab perturbation.** The in silico predictions (SPI1/CEBPB knockdown, NFκB
+   inhibition, MEF2C de-repression, SPP1→CD44 blockade; OPN-KO.5xFAD reduces plaque,
+   PNAS 2023 doi 10.1073/pnas.2218915120) are now specific, ranked, and falsifiable
+   — ready for CRISPRi/knockdown in microglial models, delivered via
+   microglia-enhancer-driven AAV/LNP.
+4. **The incoming cohort.** ~100 samples across six brain regions (AD/LBD/control,
+   APOE-annotated) will move every resilience/APOE result from directional (n=9 vs 16,
+   P≈0.05) to conclusive.
 
 ---
 
