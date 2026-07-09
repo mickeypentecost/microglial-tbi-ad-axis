@@ -130,12 +130,12 @@ from GWAS → enhancer → deliverable.
    (PP3=0.97: caQTL and AD signal both present but from distinct causal variants). This is the
    definitive close — in the exact cell type, not bulk brain or macrophage surrogate. E-P linking
    (ABC/Hi-C) additionally places 524 AD-locus variants in microglial enhancers that physically
-   loop to 33 axis genes. **Formal three-way moloc** (caQTL ∩ eQTL ∩ GWAS, both molecular QTLs
-   from primary human microglia) is the capstone: caQTL↔eQTL coloc is real but modest (strongest
-   C1QA PP4=0.18 — enhancers do regulate their genes), yet **neither molecular trait colocalizes
-   with AD** (max eQTL↔GWAS PP4=0.06, max caQTL↔GWAS PP4=0.06). So the chromatin→expression axis is
-   genetically real but *AD-risk-independent* — proven across all three molecular layers, not
-   inferred.
+   loop to 33 axis genes. **Pairwise colocalization across all three molecular layers**
+   (caQTL, eQTL, and AD GWAS — three independent shared-SNP Wakefield-ABF tests, not a joint
+   3-trait model) is the capstone: caQTL↔eQTL coloc is real but modest (strongest C1QA PP4=0.18 —
+   enhancers do regulate their genes), yet **neither molecular trait colocalizes with AD** (max
+   eQTL↔GWAS PP4=0.06, max caQTL↔GWAS PP4=0.06). So the chromatin→expression axis is genetically
+   real but *AD-risk-independent* — shown at all three molecular layers, not inferred.
 3. **Is MEF2 instructive?** The in silico result says MEF2 represses; the causal test is CRISPRi/a
    of MEF2C/CEBPB/CD44 in **human iPSC-microglia**.
 4. **Two-hit epidemiology** — does TBI × accelerator-genotype predict faster decline in humans?

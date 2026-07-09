@@ -130,7 +130,7 @@ resolution:
 |------|------|--------|
 | **cis-eQTL coloc** | cell-type-matched myeloid eQTLs (Alasoo macrophage, BLUEPRINT monocyte; up to P=3×10⁻²⁷) | **No coloc** (max PP4=0.02) — removes the "bulk brain diluted the signal" objection |
 | **enhancer caQTL coloc** | Kosoy/Raj primary-microglia meta-caQTL (n=150) | GWS caQTL at SPP1 (P=1.5×10⁻¹²), but **no coloc** with AD (max PP4=0.06); CTSB PP3=0.97 = association *without* colocalization |
-| **three-way moloc** | caQTL ∩ eQTL ∩ GWAS, both molecular QTLs from primary microglia | caQTL↔eQTL real but modest (C1QA PP4=0.18); **neither molecular trait colocalizes with AD** (max 0.06) |
+| **pairwise coloc across 3 layers** | caQTL, eQTL, GWAS — three independent shared-SNP ABF tests (not a joint 3-trait model), both molecular QTLs from primary microglia | caQTL↔eQTL real but modest (C1QA PP4=0.18); **neither molecular trait colocalizes with AD** (max 0.06) |
 
 The chromatin→expression regulation of the accelerator effectors is genetically
 real but **independent of inherited AD risk**. Risk enters through APOE/TREM2 and
@@ -190,7 +190,7 @@ rewards verifiable specificity, so we do not overclaim:
   requires bulk RNA-seq (CD44 rises up to ~25-fold after controlled cortical
   impact; PMID 25309501), reframing "resolution insufficiency" as partly an assay
   gap with a concrete fix; (5) the **direction result** — formal colocalization at
-  three molecular layers (myeloid eQTL, primary-microglia caQTL, three-way moloc)
+  three molecular layers (myeloid eQTL, primary-microglia caQTL, and pairwise caQTL/eQTL/GWAS coloc)
   shows the accelerator effectors are genetically controlled but *AD-risk-independent*
   — installed by the trigger, not inherited; (6) the **perturbable two-tier TF
   architecture** — SPI1/CEBPB permissive backbone vs NFκB/MEF2 arm-specific switch,

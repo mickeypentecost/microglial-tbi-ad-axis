@@ -109,7 +109,7 @@ a shared, targetable mechanism should look like.
 
 - **`novelty_synthesis.md`** — the full causal narrative: convergence → causation/direction → perturbation/mechanism, plus the drug-target rationale.
 - **`caqtl_formal_coloc.csv`** / **`caqtl_enhancer_coloc.csv`** — primary-microglia (Kosoy/Raj, n=150) caQTL vs AD-GWAS; enhancer-level dissection (effectors vs inherited-risk loci) and formal shared-SNP coloc.
-- **`moloc_threeway.csv`** — three-way moloc: caQTL ∩ eQTL ∩ GWAS (both molecular QTLs from primary microglia); caQTL↔eQTL PP4 vs eQTL/caQTL↔AD PP4.
+- **`moloc_threeway.csv`** — pairwise colocalization across three molecular layers (caQTL, eQTL, AD GWAS): three independent shared-SNP Wakefield-ABF tests per gene (not a joint 3-trait model), both molecular QTLs from primary microglia. Columns: PP4_caQTL_eQTL, PP4_eQTL_GWAS, PP4_caQTL_GWAS.
 - **`caqtl_ep_ad_loops.csv`** — AD-locus variants in microglial enhancers physically looping (ABC/Hi-C) to axis genes.
 - **`coloc_mr_results.csv`** — cell-type-matched myeloid (macrophage/monocyte) eQTL vs AD-GWAS coloc.
 - **`full_circuit.csv`** — integrated per-gene circuit (AD-risk / caQTL / E-P loop / expression layers).
