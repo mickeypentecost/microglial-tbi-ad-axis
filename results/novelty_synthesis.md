@@ -2,7 +2,8 @@
 
 This session extended the microglial TBI→AD axis from a **convergence map** (TBI and AD look
 alike) to a **causal, directional, perturbable model** (here is the switch, which way it runs,
-and how to flip it). Three new analytical arms, each from public data or models in hand.
+and how to flip it), and finally to a **spatial and temporal model** (where the axis fires in
+tissue, and when the brake is available). Each arm draws on public data or models in hand.
 
 ![synthesis]({{artifact:art_ee419b7f-ee2c-4c8b-a402-14d7b50e3b55}})
 
@@ -84,6 +85,29 @@ and how to flip it). Three new analytical arms, each from public data or models 
    disengaged brake, measured directly in the cell type and genes single-nucleus cannot see.
    **Novel** — converts "the brake is off" from a literature claim into a fresh, modality-matched
    measurement.
+8. **The accelerator concentrates spatially at BOTH the AD plaque and the TBI lesion — the same
+   axis, two injuries.** Subcellular spatial transcriptomics (Stereo-seq, 18-month App-NL-G-F AD,
+   GSE263793, 142,383 bins at 50 µm with the study's plaque mask) shows the accelerator module
+   rising **monotonically toward amyloid plaques** (0.25 at >400 µm → 0.43 on-plaque, Spearman
+   ρ=−0.28, p≈0), while the resolution/HA brake is **spatially excluded** (ρ=+0.38 — depleted
+   where the accelerator fires) and astrocytes co-concentrate peri-plaque (ρ=−0.11, the CD44-shell
+   receptor half). The same gradient appears at the **TBI lesion** (Visium, impact TBI 7 d,
+   GSE319409, 6 TBI vs 6 Sham vehicle sections): the accelerator tracks the lesion (accel-vs-injury
+   ρ=+0.47, using a lesion proxy that shares no gene with the accelerator module, so it is not
+   circular) and is up TBI-vs-Sham (p=4×10⁻²⁶). **Novel** — the axis is not just co-expressed in
+   bulk but spatially organizes around two distinct injury landmarks; different geometry (focal
+   plaque vs diffuse lesion), same accelerator concentration.
+9. **The resolution brake is a temporal PHASE, not a fixed level — and that reconciles the
+   AD/TBI asymmetry.** In the CEREBRI mouse TBI time-course (GSE269748, 24 h → 7 d → 6 mo), the
+   microglial resolution/HA module is **highest acutely (24 h, +0.065) and collapses by 7 d
+   (−0.019)** as the accelerator surges to its subacute peak (24 h +0.76 → 7 d +1.24 → 6 mo +0.70;
+   accel time-trend ρ=+0.44, resolHA ρ=−0.25, both p≈0). Individual brakes confirm it: Anxa1 peaks
+   at 7 d, while Socs3/Tgfb1 are highest at 24 h. So the modest brake rise seen at the TBI Visium
+   lesion (a single 7-d snapshot) is the **tail of an acute resolution attempt**; the chronic AD
+   plaque niche looks like the **6-month** TBI state — accelerator elevated, brake gone. **Novel** —
+   reframes "resolution failure" from a static deficit to a lost temporal window: TBI mounts an
+   early brake AD never regains. *Caveat:* CEREBRI has controls only at 24 h, so this is a
+   within-TBI trajectory anchored to one acute baseline; 7 d/6 mo rest on 4 donors each.
 
 ---
 
@@ -152,9 +176,14 @@ from GWAS → enhancer → deliverable.
    of MEF2C/CEBPB/CD44 in **human iPSC-microglia**.
 4. **Two-hit epidemiology** — does TBI × accelerator-genotype predict faster decline in humans?
    → **ADNI-DoD** (see `adni_dod_sidequest.md`, run separately).
-5. **Spatial context** — is the accelerator microglia physically adjacent to the CD44-high
-   astrocyte, around plaques? The CD44 relay is a cell-cell event snRNA/bulk cannot localize.
-   → 10x Visium/Xenium human AD, MERFISH 5xFAD, mouse CCI Visium (next-session arm).
+5. **Spatial context — DONE (findings 8–9).** The accelerator concentrates at the AD plaque
+   (Stereo-seq, ρ=−0.28) and the TBI lesion (Visium, ρ=+0.47), with astrocytes co-concentrating
+   peri-plaque (the CD44-shell). The one remaining spatial question is **single-cell adjacency**:
+   Visium (55 µm) and Stereo-seq bins average multiple cells, so the accelerator-microglia ↔
+   CD44-astrocyte *cell-touching-cell* relay is at the resolution ceiling — the prior Colab CosMx
+   work put them in a **two-zone** architecture (DAM core → CD44-astrocyte shell, segregated at
+   single-cell z≈−5), which our binned data are consistent with but cannot re-resolve. → Xenium/
+   MERFISH human AD for true single-cell adjacency.
 6. **Resolution-arm direction in a well-powered human set** — bulk closes the *detection* and
    *coherence* gap (finding 7 above) and the mouse shows the CD44-hub disengagement, but the human
    AD-vs-control direction is underpowered in GSE153873 (n=12 vs 10; only SPP1 reaches p=0.038). A

@@ -101,3 +101,21 @@ manner.
 - **GSE276182** — mouse sorted astrocyte + microglia bulk RNA-seq ± traumatic brain injury
   (control/EE/KD genotypes). NCBI GEO, open. Gene-count matrix (`GSE276182_gene_count_TBI.txt.gz`).
   Used for the astrocytic CD44-relay injury response (CD44/SPP1/HAS2 up, TSG-6/TNFAIP6 down).
+
+## Spatial + temporal arm (added: spatial convergence)
+
+- **GSE263793** — Mallach 2024 (Cell Reports), mouse App-NL-G-F AD, **Stereo-seq** (BGI) subcellular
+  spatial transcriptomics, 18-month section AD_E3 + plaque segmentation mask. NCBI GEO, open.
+  Downloaded `*_bin1_max.gem.txt.gz` + `*_PlaqueSegmentation_Binary_Aligned.png.gz`, binned to
+  50 µm on Modal ephemeral compute (raw gem too large for local disk). Used for the peri-plaque
+  accelerator gradient and brake-exclusion result.
+- **GSE319409** — Sullivan et al. 2026 (PMID 41508250), mouse impact TBI (+4-AP treatment arm),
+  10x **Visium** CytAssist, 7 days post-injury. NCBI GEO, open. Used the 6 TBI + 6 Sham
+  **vehicle-only** sections (no drug confound) for the TBI lesion-niche gradient and TBI-vs-Sham
+  module contrast.
+- **GSE269748** — CEREBRI mouse TBI single-nucleus RNA-seq time-course (24 h / 7 d / 6 mo),
+  TBI vs control. Used for the temporal reading of the resolution brake (acute-transient) — controls
+  present at 24 h only, so analyzed as a within-TBI trajectory.
+- **GSE203424** — Sierksma/INPP5D APP/PS1 mouse, 10x Visium 55 µm (3 PSAPP + 3 WT untreated).
+  NCBI GEO, open. Used for the genotype-contrast Visium panel (accelerator up in amyloid; spatial
+  focality genotype-independent — the resolution ceiling that motivated the Stereo-seq step).

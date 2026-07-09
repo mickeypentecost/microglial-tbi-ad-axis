@@ -59,6 +59,16 @@ single-nucleus RNA — its quantification requires bulk RNA-seq
 
 Supporting GWAS locus map: `figures/gwas_axis_loci.png`.
 
+### Spatial and temporal arm — where the axis fires, and when the brake is available
+
+| Layer | Question | Result | Figure |
+|-------|----------|--------|--------|
+| **Spatial — AD plaque niche** | Does the accelerator concentrate around amyloid plaques? | Subcellular Stereo-seq (18-mo App-NL-G-F, 142k bins at 50 µm): accelerator rises monotonically toward plaques (**ρ = −0.28**, 0.25 far → 0.43 on-plaque); the resolution/HA brake is *excluded* (ρ = +0.38); astrocytes co-concentrate peri-plaque (the CD44 shell) | `figures/spatial_stereoseq_AD.png` |
+| **Spatial — TBI lesion niche** | Does the same axis concentrate at the TBI lesion? | Visium (impact TBI 7 d, 6 TBI / 6 Sham): accelerator up TBI-vs-Sham (**P = 4×10⁻²⁶**) and tracks lesion proximity (**ρ = +0.47**, non-circular proxy). Same axis, two injury landmarks | `figures/spatial_convergence.png` |
+| **Temporal — TBI time-course** | Is the resolution brake a level or a phase? | CEREBRI (24 h → 7 d → 6 mo): the brake is **highest acutely (24 h)** and collapses by 7 d as the accelerator peaks (accel trend ρ = +0.44, brake ρ = −0.25). The chronic AD plaque niche resembles the 6-mo TBI state — accelerator without the acute brake | `figures/cerebri_timecourse.png` |
+
+Supporting Visium genotype panel: `figures/spatial_visium.png`.
+
 ---
 
 ## Why this matters
