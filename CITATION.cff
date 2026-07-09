@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Genetically anchoring the shared TBI–AD microglial axis"
+message: "If you use this analysis, please cite it and the underlying data sources listed in DATA_PROVENANCE.md."
+type: software
+authors:
+  - family-names: Pentecost
+    given-names: Mickey
+license: MIT
+repository-code: "https://github.com/"
+keywords:
+  - Alzheimer's disease
+  - traumatic brain injury
+  - microglia
+  - S-LDSC
+  - ChromBPNet
+  - GWAS
+date-released: 2026-07-09

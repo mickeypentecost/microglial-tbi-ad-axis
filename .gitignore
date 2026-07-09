@@ -1,0 +1,18 @@
+# Large reference data — fetched by scripts, not committed (see DATA_PROVENANCE.md)
+ldsc_ref/
+1000G_*/
+baselineLD.*
+*.tgz
+*.sumstats
+# Large model weights — fetched from corceslab/variantapp
+*_model.h5
+*_biasmodel.h5
+corces/
+# GWAS sumstats (755 MB)
+*_buildGRCh38.tsv.gz
+ad_gwas_*.parquet
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store

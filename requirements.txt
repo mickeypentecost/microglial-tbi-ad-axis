@@ -1,0 +1,33 @@
+# ============================================================================
+# Three environments are used. Create each separately; versions are the exact
+# ones this analysis ran under.
+# ============================================================================
+
+# --- ENV 1: analysis (GWAS streaming, intersection, enrichment, figures) ---
+# python 3.11
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+matplotlib>=3.7
+pyliftover==0.4          # hg38->hg19 liftover of enhancer annotations
+pybedtools>=0.9          # (optional) interval ops
+
+# --- ENV 2: ChromBPNet inference (allelic scoring) ---
+# python 3.11, name it `tf_infer`
+#   tensorflow==2.19.1
+#   tf-keras==2.21.0     # Keras-2 compat shim; set TF_USE_LEGACY_KERAS=1
+#   h5py>=3.16
+#   numpy, pandas, scipy
+# The Corces C24 model is Keras 2.4; full-model load fails under py3.11 on a
+# Lambda layer (Python-3.6 marshaled bytecode). We reconstruct the bias-free
+# inner submodel instead — see code/chrombpnet_scoring.py. bedtools not needed.
+
+# --- ENV 3: S-LDSC (partitioned heritability) ---
+# python 3.11, name it `ldsc`
+#   numpy, pandas>=2.0, scipy, bitarray>=2.6, pysam, pybedtools
+#   bedtools (conda: bioconda::bedtools) — required by make_annot.py
+# Uses a Python-3 port of github.com/bulik/ldsc (originally Python 2.7):
+# 2to3 conversion + fixes for pandas-2 (delim_whitespace, .ix, set_option names),
+# bitarray-2 (decode returns iterator), binary-mode file opens, traceback.format_exc
+# signature, and an fh-scoping bug in ldscore/parse.py:annot(). See code/ for the
+# driver; the ported ldsc tree is fetched fresh + patched by setup instructions.

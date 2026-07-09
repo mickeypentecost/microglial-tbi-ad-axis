@@ -1,0 +1,4 @@
+arm,n,median_abs_lfc,median_jsd,max_abs_lfc,n_AD_assoc
+accelerator,1752,0.0252,0.000155,2.902,91
+DAM_only,1063,0.0297,0.000159,2.146,2
+resolution,541,0.0273,0.000179,2.646,0

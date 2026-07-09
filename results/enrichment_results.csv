@@ -1,0 +1,5 @@
+arm,OR,fisher_p,perm_fold,perm_p,n_assoc_in_enh
+accelerator,1.56,0.000115,,,96
+DAM_only,1.11,0.703,,,2
+resolution,0.0,1.0,,,0
+accelerator_APOEexcl,1.56,0.00948,1.59,0.0022,41
