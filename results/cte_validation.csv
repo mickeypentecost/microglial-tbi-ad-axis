@@ -1,0 +1,9 @@
+cell_type,module,contrast,delta_mean,cohens_d,MWU_p,ttest_p,n_grp,n_ctrl
+Microglia,accel,RHI_vs_Control,-0.0192,-0.082,0.6058,0.8676,9,8
+Microglia,accel,CTE_vs_Control,-0.0048,-0.023,0.6574,0.961,11,8
+Microglia,brake,RHI_vs_Control,0.0248,0.515,0.4234,0.3058,9,8
+Microglia,brake,CTE_vs_Control,0.0035,0.057,0.492,0.9035,11,8
+Astrocyte,accel,RHI_vs_Control,0.0322,0.584,0.9626,0.2477,9,8
+Astrocyte,accel,CTE_vs_Control,0.0283,0.805,0.0908,0.1012,11,8
+Astrocyte,brake,RHI_vs_Control,0.0213,0.624,0.9626,0.2189,9,8
+Astrocyte,brake,CTE_vs_Control,0.0149,0.767,0.1774,0.1173,11,8
