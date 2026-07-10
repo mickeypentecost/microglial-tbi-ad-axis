@@ -1,0 +1,5 @@
+test,rho
+accel~plaque_dist (marginal),-0.4555814973787607
+accel~centroid_dist (marginal),-0.453701261119905
+accel~plaque_dist | centroid (partial),-0.242034063783973
+accel~centroid_dist | plaque (partial),-0.237801212613563

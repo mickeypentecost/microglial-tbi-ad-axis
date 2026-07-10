@@ -88,10 +88,16 @@ tissue, and when the brake is available). Each arm draws on public data or model
 8. **The accelerator concentrates spatially at BOTH the AD plaque and the TBI lesion — the same
    axis, two injuries.** Subcellular spatial transcriptomics (Stereo-seq, 18-month App-NL-G-F AD,
    GSE263793, 142,383 bins at 50 µm with the study's plaque mask) shows the accelerator module
-   rising **monotonically toward amyloid plaques** (0.25 at >400 µm → 0.43 on-plaque, Spearman
-   ρ=−0.28, p≈0), while the resolution/HA brake is **spatially excluded** (ρ=+0.38 — depleted
-   where the accelerator fires) and astrocytes co-concentrate peri-plaque (ρ=−0.11, the CD44-shell
-   receptor half). The same gradient appears at the **TBI lesion** (Visium, impact TBI 7 d,
+   rising **toward amyloid plaques**, and the effect **survives a tissue-geometry control**: after
+   partialling out distance-to-tissue-centroid, the accelerator still tracks plaque distance
+   (partial ρ=−0.24), and bins near plaques exceed far bins **within every concentric geometry
+   band** (Δ=+0.16 inner → +0.23 edge). The resolution/HA brake is **spatially excluded**
+   (ρ=+0.38 — depleted where the accelerator fires) and astrocytes co-concentrate peri-plaque
+   (the CD44-shell receptor half). *Honest caveat, from the WT_F5 negative control (GSM8199181, no
+   plaques):* a general **center-high tissue gradient** exists independent of plaques (WT centroid
+   ρ=−0.44), and it accounts for roughly half the marginal plaque signal (marginal plaque ρ=−0.46 ≈
+   centroid ρ=−0.45). So the accelerator concentrates at plaques *on top of* a geometric center-high
+   baseline — the plaque-specific component is modest but robust to the confound. The same gradient appears at the **TBI lesion** (Visium, impact TBI 7 d,
    GSE319409, 6 TBI vs 6 Sham vehicle sections): the accelerator tracks the lesion (accel-vs-injury
    ρ=+0.47, using a lesion proxy that shares no gene with the accelerator module, so it is not
    circular) and is up TBI-vs-Sham (p=4×10⁻²⁶). **Novel** — the axis is not just co-expressed in
