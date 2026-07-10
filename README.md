@@ -18,6 +18,27 @@ an OSI-approved (MIT) license.
 
 ---
 
+## Start here: the submission and its five figures
+
+The full plain-language write-up is **[`SUBMISSION.md`](SUBMISSION.md)**, and
+every panel is described in **[`FIGURE_CAPTIONS.md`](FIGURE_CAPTIONS.md)**. The
+five figures tell the story in order — each reads *orient → data → interpret*,
+with a shared color grammar (red = inflammatory **accelerator**, blue =
+**brake**/resolution, purple = astrocytes, slate = genetics, amber = conclusion):
+
+| Figure | Question it answers |
+|--------|---------------------|
+| **[Fig 1](figures/figure1_convergence.png)** — the hook | Is there one shared accelerator program, and does it hold up? (module recovery · up in both diseases · reproduces across species/methods · 31% of inherited AD risk) |
+| **[Fig 2](figures/figure2_switch.png)** — the regulatory switch | Which master-control proteins turn the accelerator on and off? (NFκB activator · MEF2C repressor · SPI1/CEBPB identity proteins) |
+| **[Fig 3](figures/figure3_genetics.png)** — trigger vs threshold | Are inherited risk and injury-installed genes the same? (only APOE/TREM2 are inherited-risk; the effectors are not — *trigger ≠ threshold*) |
+| **[Fig 4](figures/figure4_space_time.png)** — where & when | Does the accelerator concentrate at the damage? (real tissue maps: at amyloid plaques in AD, at the lesion in injury; peaks ~7 days) |
+| **[Fig 5](figures/figure5_cd44_hub.png)** — the CD44 hub | Where do the accelerator and brake meet, and how does the brake fail? (both signal through CD44; TSG-6 falls while everything else rises) |
+
+The design system these figures share is documented in
+[`figures/DESIGN_SYSTEM.md`](figures/DESIGN_SYSTEM.md).
+
+---
+
 ## The result in one figure
 
 ![Cross-arm synthesis](figures/crossarm_synthesis.png)
