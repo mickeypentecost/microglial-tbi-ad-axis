@@ -132,3 +132,157 @@ and under injury the brake fails.
 - **D — The conclusion.** Every accelerator input to CD44 goes up while the brake
   input goes down: the receptor is pushed and never released. CD44 is a concrete,
   lab-testable therapeutic node.
+
+---
+
+# Extended Data figures
+
+These supplementary panels strengthen the resolution/brake arm. All numbers are
+computed here from public data.
+
+## Extended Data Figure 1 — The hyaluronan brake: what we can and cannot see
+
+![Extended Data Figure 1](figures/figureS1_ha_switch.png)
+
+- **A — HA machinery in single-nucleus microglia (CEREBRI TBI).** The synthesis
+  and turnover enzymes (*HAS1–3*, *HYAL1/2*) sit at the detection floor, so the
+  enzyme-level switch is not resolvable in snRNA; what *is* visible is the
+  downstream consequence the switch predicts — the low-molecular-weight-HA sensor
+  *TLR2* rises, the receptor CD44 rises, and the brake ligand *TGFB1* falls
+  (* p < 0.05).
+- **B — Sorted-astrocyte bulk RNA (TBI).** With bulk sensitivity the enzyme *HAS2*
+  and the receptor CD44 rise, but the crosslinker TSG-6 falls — synthesis without
+  the HMW-stabilizing brake.
+- **C — Four routes to fragment HA, in TBI microglia.** Of the enzymatic degraders,
+  *HYAL1/2*, *CEMIP* and *TMEM2* are all at or near the detection floor (grey; % of
+  cells detecting shown), so the enzymatic switch is unmeasurable in snRNA. The
+  non-enzymatic **oxidative route is the exception** — NADPH-oxidase *CYBB* (+0.17,
+  p < 10⁻⁴) and its assembly factor *RAC2* (+0.13, p = 0.03) are induced (amber).
+  We measure the fragmentation *machinery*, not HA fragment size itself; that HA is
+  degraded to pro-inflammatory fragments after brain injury is established in the
+  literature.
+
+## Extended Data Figure 2 — Accelerator-versus-brake imbalance
+
+![Extended Data Figure 2](figures/figureS2_imbalance.png)
+
+Per-sample module imbalance (accelerator − brake, z-scored) shifts toward the
+accelerator in disease/injury in both datasets: CEREBRI mouse TBI (Δ +0.18,
+P = 1×10⁻⁴) and SEA-AD human AD (Δ +0.09, P = 0.075; limited by 5 control donors).
+
+## Extended Data Figure 3 — Brake-module reproducibility
+
+![Extended Data Figure 3](figures/figureS3_brake_forest.png)
+
+The brake module does not clear the pre-specified ≥3-dataset bar: its effect is
+positive in human AD (d = +0.40) but negative in acute mouse TBI (d = −0.89), and
+confidence intervals cross zero. This dataset-dependence — brake behaviour differs
+between chronic disease and acute injury — is itself informative and is reported
+openly rather than averaged away.
+
+## Extended Data Figure 4 — Chronic human repetitive head impact (CTE)
+
+![Extended Data Figure 4](figures/cte_validation_forest.png)
+
+Independent test in human repetitive-head-impact and chronic traumatic
+encephalopathy cortex (GSE261807; n = 8 control / 9 repetitive-head-impact /
+11 CTE), scored as effect size versus control (Cohen's d, 95% CI). The astrocyte
+arms clear zero in CTE (accelerator d = 0.81; brake d = 0.77), whereas the
+microglial accelerator does not (d ≈ 0, CI spans zero) — the microglial
+subpopulation signal is washed out in a whole-population comparison of a small,
+variable human cohort. The cohort is directional and underpowered; it is shown
+honestly rather than over-interpreted, and it is the chronic-injury human anchor
+for the cross-species claim.
+
+---
+
+*The next three panels are the genetic anchor summarised in Figure 3, shown
+individually.*
+
+## Extended Data Figure 5 — AD variants concentrate in accelerator enhancers
+
+![Extended Data Figure 5](figures/enrichment_results.png)
+
+AD-associated common variants are enriched in microglial enhancers of the
+accelerator genes (odds ratio 1.56, Fisher P = 1×10⁻⁴; 96 associated variants in
+enhancers). The enrichment survives excluding the *APOE* region (OR 1.56,
+P = 9.5×10⁻³) and a minor-allele-frequency-matched permutation null (1.59-fold,
+P = 0.0022), so it is not driven by *APOE* alone. The resolution arm shows no
+enrichment (OR = 0), and a DAM-only contrast is not significant (OR 1.11) — the
+signal is specific to the accelerator module.
+
+## Extended Data Figure 6 — Risk alleles disrupt microglial chromatin
+
+![Extended Data Figure 6](figures/chrombpnet_results.png)
+
+A ChromBPNet model of microglial chromatin predicts the allele-specific effect of
+each variant on local accessibility. Within the accelerator arm, AD-associated
+variants disrupt predicted accessibility more than non-associated variants in the
+same enhancers (Mann–Whitney P = 0.005). The strongest single effect is
+rs3800342 at *TREM2* (P = 9.3×10⁻¹²). This is an allele-level, mechanism-of-action
+readout: the risk alleles act on the DNA the accelerator program uses.
+
+## Extended Data Figure 7 — Microglial DNA carries a large share of AD heritability
+
+![Extended Data Figure 7](figures/sldsc_heritability.png)
+
+Stratified LD-score regression on the Bellenguez AD GWAS. Microglial regulatory
+DNA is ~1.5% of the genome yet accounts for 31.4% of common-variant AD heritability
+(20.96-fold enrichment, P = 1.1×10⁻⁵; conditional coefficient z = 3.62). The
+narrower accelerator-, DAM-, and resolution-enhancer annotations are each too small
+to reach significance on their own (accelerator enrichment P = 0.32), so the
+well-powered statement is at the level of microglial regulatory DNA as a whole —
+stated at the resolution the data support.
+
+---
+
+*The next two panels are the causal-direction (colocalization) analyses behind the
+"inherited risk enters upstream" argument in Figure 3.*
+
+## Extended Data Figure 8 — Cell-type-matched eQTL colocalization
+
+![Extended Data Figure 8](figures/coloc_myeloid.png)
+
+Colocalization of AD GWAS with myeloid (macrophage/monocyte) expression QTLs — the
+cell-type-matched test that removes the "bulk-brain dilution" objection. Despite
+strong eQTLs for the effector genes (e.g. *SPP1*, *ATP8B4*), no accelerator
+effector colocalizes with AD risk (maximum PP4 = 0.022). The effector genes are
+where the program acts, not where inherited risk enters.
+
+## Extended Data Figure 9 — Enhancer-level (caQTL) and three-way colocalization
+
+![Extended Data Figure 9](figures/caqtl_enhancer.png)
+
+Microglial chromatin-accessibility QTLs resolve the same split at the enhancer
+level: accelerator/effector enhancers have strong caQTLs (e.g. *SPP1*
+caQTL P = 1.5×10⁻¹²) but the AD signal in those same peaks is weak (regional
+minimum P ≈ 3.7×10⁻³, not genome-wide significant). A three-way (caQTL–eQTL–GWAS)
+colocalization reaches at most PP4 = 0.18 (*C1QA*). Only *APOE* and *TREM2* carry
+genome-wide-significant inherited risk; the effectors are installed downstream —
+*trigger ≠ threshold*.
+
+---
+
+*The next two panels are the regulatory-logic analyses behind Figure 4.*
+
+## Extended Data Figure 10 — In-silico motif ablation
+
+![Extended Data Figure 10](figures/insilico_perturbation.png)
+
+Deleting transcription-factor motifs one at a time in the ChromBPNet model and
+measuring the predicted loss of accessibility across 754 enhancers (310 accelerator,
+444 resolution). Removing **NF-κB** specifically closes accelerator enhancers
+(mean Δ = −0.029, P = 1.9×10⁻⁵), identifying it as the arm-specific activator;
+removing **SPI1** produces a dose-dependent loss scaling with motif strength
+(ρ = −0.28, P = 9×10⁻¹⁵) but closes both arms, marking it (with CEBPB) as a
+required identity factor rather than an accelerator-specific switch.
+
+## Extended Data Figure 11 — Pseudotime trajectory
+
+![Extended Data Figure 11](figures/trajectory.png)
+
+Along the microglial resting-to-inflamed pseudotime, accelerator genes rise
+(*GPNMB* ρ = +0.16, *SPP1* ρ = +0.05, *NFKB1* ρ = +0.10) and homeostatic/brake
+genes fall (*P2RY12* ρ = −0.37, *MEF2C* ρ = −0.22, *TMEM119* ρ = −0.08). The
+overall accelerator transition runs opposite to the homeostatic state (ρ = −0.49),
+consistent with a single axis progressing from resting to disease-associated.

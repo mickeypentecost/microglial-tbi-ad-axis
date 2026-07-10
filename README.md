@@ -40,7 +40,12 @@ with a shared color grammar (red = inflammatory **accelerator**, blue =
 | **[Fig 5](figures/figure5_cd44_hub.png)** — the CD44 hub | Where do the accelerator and brake meet, and how does the brake fail? (both signal through CD44; CD44 rises across four modalities while TSG-6 falls) |
 
 The design system these figures share is documented in
-[`figures/DESIGN_SYSTEM.md`](figures/DESIGN_SYSTEM.md).
+[`figures/DESIGN_SYSTEM.md`](figures/DESIGN_SYSTEM.md). Eleven **Extended Data
+figures** — the hyaluronan brake and oxidative-fragmentation machinery, the
+accelerator/brake imbalance and reproducibility, the chronic-injury (CTE) cohort,
+the three genetic-anchor panels, the colocalization layers, and the regulatory
+motif-ablation and trajectory analyses — are captioned in
+[`FIGURE_CAPTIONS.md`](FIGURE_CAPTIONS.md).
 
 ---
 
