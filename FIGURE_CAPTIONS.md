@@ -38,54 +38,7 @@ methods, and sits on DNA that carries a large share of inherited Alzheimer's ris
 
 ---
 
-## Figure 2 — The master-control proteins that switch the accelerator on and off
-
-Which regulatory proteins turn the accelerator program up or down, read directly
-off the DNA by an AI model that predicts how open each stretch of microglial DNA is.
-
-- **A — What the model reads.** A microglial enhancer (a stretch of open DNA that
-  controls nearby genes) carries binding sites for several master-control proteins
-  (SPI1, NFκB, MEF2C, CEBPB). We delete one site at a time and watch the DNA close.
-- **B — Who does what.** Removing **NFκB** specifically closes the accelerator DNA
-  (p = 1.9×10⁻⁵) — it is the activator. Removing **SPI1** or **CEBPB** closes
-  *both* programs equally — they are identity proteins the cell needs to be a
-  microglia at all, not accelerator-specific switches.
-- **C — SPI1 dose-response.** The stronger a DNA site's SPI1 signal, the more
-  accessibility is lost when SPI1 is removed (ρ = −0.28, p = 9×10⁻¹⁵). The y-axis
-  is a signed change that crosses zero, so it is shown on a linear scale.
-- **D — Along the path from resting to inflamed.** Accelerator genes (*GPNMB,
-  SPP1*) rise and resting/brake genes (*P2RY12, MEF2C, TMEM119*) fall as microglia
-  progress toward the disease state.
-- **E — The wiring.** NFκB (activator) switches the accelerator ON; MEF2C
-  (repressor) holds it OFF; SPI1/CEBPB are required identity proteins upstream of
-  both.
-
----
-
-## Figure 3 — Inherited risk sets the threshold; injury pulls the trigger
-
-The genetics. Inherited Alzheimer's risk and the environmentally-installed
-accelerator effectors are largely *different* genes.
-
-- **A — How a risk variant reaches a gene.** An inherited variant sits in a DNA
-  switch; if that switch is more open, a loop connects it to a gene, changing the
-  gene's expression. Each accelerator gene is scored on all four layers.
-- **B — The four-layer map.** For every accelerator gene, its inherited-risk
-  signal, how open its switch is, its enhancer→gene loop, and its expression.
-- **C — The positive-control test.** Only *APOE* and *TREM2* clear genome-wide
-  significance for inherited risk (dashed line). The accelerator *effectors*
-  (*SPP1, CD68, TLR2* …) do not — even where their DNA switches are strong (e.g.
-  *SPP1*). The control works, and it shows the effectors are not themselves
-  inherited-risk genes.
-- **D — The asymmetry.** Accelerator genes carry more inherited AD-risk signal
-  (1.48×) than the brake genes (1.09×).
-- **E — The conclusion.** Inherited risk sets the *threshold* (APOE, TREM2);
-  injury and environment pull the *trigger* (SPP1 and the effectors, which carry
-  no common risk variants). Trigger ≠ threshold.
-
----
-
-## Figure 4 — Where the accelerator turns on, and when
+## Figure 2 — Where the accelerator turns on, and when
 
 The accelerator concentrates exactly where the tissue is damaged, in both
 diseases, shown here on real tissue.
@@ -113,20 +66,69 @@ flat near zero at every time point — the brake is a phase that never fully eng
 
 ---
 
+## Figure 3 — Inherited risk sets the threshold; injury pulls the trigger
+
+The genetics. Inherited Alzheimer's risk and the environmentally-installed
+accelerator effectors are largely *different* genes.
+
+- **A — How a risk variant reaches a gene.** An inherited variant sits in a DNA
+  switch; if that switch is more open, a loop connects it to a gene, changing the
+  gene's expression. Each accelerator gene is scored on all four layers.
+- **B — The four-layer map.** For every accelerator gene, its inherited-risk
+  signal, how open its switch is, its enhancer→gene loop, and its expression.
+- **C — The positive-control test.** Only *APOE* and *TREM2* clear genome-wide
+  significance for inherited risk (dashed line). The accelerator *effectors*
+  (*SPP1, CD68, TLR2* …) do not — even where their DNA switches are strong (e.g.
+  *SPP1*). The control works, and it shows the effectors are not themselves
+  inherited-risk genes.
+- **D — The asymmetry.** Accelerator genes carry more inherited AD-risk signal
+  (1.48×) than the brake genes (1.09×).
+- **E — The conclusion.** Inherited risk sets the *threshold* (APOE, TREM2);
+  injury and environment pull the *trigger* (SPP1 and the effectors, which carry
+  no common risk variants). Trigger ≠ threshold.
+
+---
+
+## Figure 4 — The master-control proteins that switch the accelerator on and off
+
+Which regulatory proteins turn the accelerator program up or down, read directly
+off the DNA by an AI model that predicts how open each stretch of microglial DNA is.
+
+- **A — What the model reads.** A microglial enhancer (a stretch of open DNA that
+  controls nearby genes) carries binding sites for several master-control proteins
+  (SPI1, NFκB, MEF2C, CEBPB). We delete one site at a time and watch the DNA close.
+- **B — Who does what.** Removing **NFκB** specifically closes the accelerator DNA
+  (p = 1.9×10⁻⁵) — it is the activator. Removing **SPI1** or **CEBPB** closes
+  *both* programs equally — they are identity proteins the cell needs to be a
+  microglia at all, not accelerator-specific switches.
+- **C — SPI1 dose-response.** The stronger a DNA site's SPI1 signal, the more
+  accessibility is lost when SPI1 is removed (ρ = −0.28, p = 9×10⁻¹⁵). The y-axis
+  is a signed change that crosses zero, so it is shown on a linear scale.
+- **D — Along the path from resting to inflamed.** Accelerator genes (*GPNMB,
+  SPP1*) rise and resting/brake genes (*P2RY12, MEF2C, TMEM119*) fall as microglia
+  progress toward the disease state.
+- **E — The wiring.** NFκB (activator) switches the accelerator ON; MEF2C
+  (repressor) holds it OFF; SPI1/CEBPB are required identity proteins upstream of
+  both.
+
+---
+
 ## Figure 5 — CD44: the receptor where the accelerator and the brake meet
 
 The shared hub. Microglia and astrocytes both signal through one receptor, CD44,
 and under injury the brake fails.
 
-- **A — The wiring.** Microglia make the accelerator ligand SPP1/OPN; astrocytes
-  make the brake ligand TSG-6 and the sugar hyaluronan. Both act on **CD44**, a
-  receptor on both cell types. SPP1 activates; TSG-6 inhibits.
-- **B — Who expresses what.** Detection of hub genes in microglia vs astrocytes
+- **A — Who expresses what.** Detection of hub genes in microglia vs astrocytes
   (dot size = fraction of cells expressing; color = average level).
-- **C — The astrocyte brake fails under injury.** In sorted astrocytes after
-  injury, almost everything rises — SPP1 (+4.63), HMMR (+1.58), SOCS3 (+1.53), CD44
-  (+1.04), HAS2 (+0.76) — while the one pro-resolving brake gene, TSG-6/*Tnfaip6*,
-  is the lone gene that falls (−0.34, p = 0.03).
+- **B — The astrocyte brake fails under injury.** In sorted astrocytes after
+  injury, almost everything rises — SPP1, CD44 (+1.04), HAS2 (+0.76), HMMR — while
+  the one pro-resolving brake gene, TSG-6/*Tnfaip6*, is the lone gene that falls
+  (−0.34, p = 0.03).
+- **C — CD44 rises across four modalities and both species.** The receptor itself
+  goes up in sorted-astrocyte bulk RNA under injury (+1.0 log₂), human AD brain
+  protein (+0.26 log₂), the mouse plaque-microenvironment proteome (+0.72 log₂),
+  and single-nucleus microglia under injury (+0.13) — the most consistent single
+  observation in the study (** p < 0.01, * p < 0.05, † p < 0.1).
 - **D — The conclusion.** Every accelerator input to CD44 goes up while the brake
   input goes down: the receptor is pushed and never released. CD44 is a concrete,
   lab-testable therapeutic node.

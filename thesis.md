@@ -1,4 +1,4 @@
-# From correlation to cause: genetically anchoring a shared TBI–AD microglial resolution-failure axis
+# A shared microglial resolution-failure axis links brain injury to Alzheimer's disease — the causal argument
 
 ## Thesis
 
@@ -6,9 +6,11 @@ Traumatic brain injury raises the lifetime risk of Alzheimer's disease, but the 
 
 We test this with a three-layer argument on one shared gene spine (the pre-specified accelerator/DAM and resolution modules):
 
-1. **Environmental arm (foundation).** Single-nucleus and bulk data show TBI and AD converge on the microglial OPN/CD44 accelerator program, cross-species and cross-modality, with a resolution deficit that is not sustained over time. *(Established in prior CSGIA work; the correlational foundation.)*
-2. **Genetic arm (new).** Do AD GWAS credible-set variants fall preferentially in **microglial enhancers of the accelerator genes**? And does a pre-trained **ChromBPNet** chromatin model predict that the risk alleles disrupt those enhancers allele-specifically? *(Built during the hackathon.)*
-3. **Quantitative synthesis (new).** By stratified LD-score regression, **what fraction of AD SNP-heritability is captured by the microglial-accelerator-enhancer annotation?** *(Built during the hackathon.)*
+1. **Environmental arm.** Single-nucleus and bulk data — reanalyzed here from public sources — show TBI and AD converge on the microglial OPN/CD44 accelerator program, cross-species and cross-modality, with a resolution deficit that is not sustained over time.
+2. **Genetic arm.** Do AD GWAS credible-set variants fall preferentially in **microglial enhancers of the accelerator genes**? And does a **ChromBPNet** chromatin model predict that the risk alleles disrupt those enhancers allele-specifically?
+3. **Quantitative synthesis.** By stratified LD-score regression, **what fraction of AD SNP-heritability is captured by the microglial-accelerator-enhancer annotation?**
+
+All three arms are computed during this work from public data; no prior analysis is reused.
 
 **Payoff statement:** *TBI installs environmentally what AD risk alleles predispose to genetically — and both converge on the same microglial resolution-failure axis.*
 

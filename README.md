@@ -1,20 +1,25 @@
-# Genetically anchoring the shared TBI–AD microglial axis
+# A shared microglial resolution-failure axis links brain injury to Alzheimer's disease
+
+*Mickey Pentecost, PhD — Built with Claude · Life Sciences Hackathon (Researcher Track)*
 
 **A cross-modality, cross-species test of whether the same microglial
 inflammatory program that traumatic brain injury (TBI) *installs* is the one
-that Alzheimer's disease (AD) risk alleles *predispose to* — computed from
-public data.**
+that Alzheimer's disease (AD) risk alleles *predispose to* — computed entirely
+from public data during the event.**
 
 > **One-sentence thesis.** TBI installs environmentally what AD risk alleles
 > predispose to genetically, and both converge on the same microglial
 > **accelerator** axis (OPN/SPP1 · TREM2 · APOE · complement), while the
-> pro-resolving **brake** arm (TSG-6/TNFAIP6 · CD44) stays disengaged.
+> pro-resolving **brake** arm (TSG-6/TNFAIP6 · CD44) stays disengaged — and both
+> arms are read out at a single receptor, **CD44**.
 
-This repository contains the **genetic-anchoring arm** of the analysis: a
-three-layer test that AD common-variant genetics converges on microglial
-regulatory DNA, and specifically on the *accelerator* gene module rather than
-the *resolution* module. It is built to be reproducible from public data with
-an OSI-approved (MIT) license.
+This repository holds the complete analysis behind the submission: a coordinated
+microglial accelerator module tested across two species and four assay types
+(single-nucleus and bulk RNA, spatial transcriptomics, proteomics), anchored by
+common-variant and regulatory genetics, and integrated at CD44. Every result is
+computed here from public data — no prior analysis is reused — under an
+OSI-approved (MIT) license. The genetic-anchoring layer (variant enrichment,
+allelic chromatin effect, partitioned heritability) is documented in full below.
 
 ---
 
@@ -29,10 +34,10 @@ with a shared color grammar (red = inflammatory **accelerator**, blue =
 | Figure | Question it answers |
 |--------|---------------------|
 | **[Fig 1](figures/figure1_convergence.png)** — the hook | Is there one shared accelerator program, and does it hold up? (module recovery · up in both diseases · reproduces across species/methods · 31% of inherited AD risk) |
-| **[Fig 2](figures/figure2_switch.png)** — the regulatory switch | Which master-control proteins turn the accelerator on and off? (NFκB activator · MEF2C repressor · SPI1/CEBPB identity proteins) |
+| **[Fig 2](figures/figure2_space_time.png)** — where & when | Does the accelerator concentrate at the damage? (real tissue maps: at amyloid plaques in AD, at the lesion in injury; peaks ~7 days) |
 | **[Fig 3](figures/figure3_genetics.png)** — trigger vs threshold | Are inherited risk and injury-installed genes the same? (only APOE/TREM2 are inherited-risk; the effectors are not — *trigger ≠ threshold*) |
-| **[Fig 4](figures/figure4_space_time.png)** — where & when | Does the accelerator concentrate at the damage? (real tissue maps: at amyloid plaques in AD, at the lesion in injury; peaks ~7 days) |
-| **[Fig 5](figures/figure5_cd44_hub.png)** — the CD44 hub | Where do the accelerator and brake meet, and how does the brake fail? (both signal through CD44; TSG-6 falls while everything else rises) |
+| **[Fig 4](figures/figure4_switch.png)** — the regulatory switch | Which master-control proteins turn the accelerator on and off? (NFκB activator · MEF2C repressor · SPI1/CEBPB identity proteins) |
+| **[Fig 5](figures/figure5_cd44_hub.png)** — the CD44 hub | Where do the accelerator and brake meet, and how does the brake fail? (both signal through CD44; CD44 rises across four modalities while TSG-6 falls) |
 
 The design system these figures share is documented in
 [`figures/DESIGN_SYSTEM.md`](figures/DESIGN_SYSTEM.md).
