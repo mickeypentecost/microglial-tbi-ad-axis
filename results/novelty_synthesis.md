@@ -142,9 +142,12 @@ tissue, and when the brake is available). Each arm draws on public data or model
       5% of astrocytes). So whichever cell fragments the matrix, the pro-inflammatory HA signal is
       read out by microglia, feeding the exact TLR2→NFκB accelerator this project identified. *(The
       degrading enzyme's cell source is NOT resolved in our data — HYAL1's TBI direction conflicts
-      between snRNA, where it edges down in microglia and up in astrocytes, and sorted-bulk, where
-      the microglial delta is +0.63 but not significant; and LMW-HA fragmentation is also
-      non-enzymatic/oxidative. We therefore do not attribute the degradation step to a cell type.)*
+      between the two sources: in snRNA it edges down in microglia (3.4→2.9% detection) and up in
+      astrocytes (1.8→3.5%), whereas sorted-bulk shows a positive microglial delta (+0.63) with no
+      significance test available for the microglial side (that table carries only an astrocyte
+      p-value). With the two datasets disagreeing in direction and no microglial statistic to
+      adjudicate, we do not attribute the degradation step to a cell type; LMW-HA fragmentation is
+      also non-enzymatic/oxidative in any case.)*
       The HA arm is thus not uniformly protective: astrocytes build the HMW brake matrix, and its
       degradation products are sensed by the microglial TLR2 accelerator.
     **Corrected framing:** *microglia drive acceleration; astrocytes hold the brake ligand (TSG-6)
