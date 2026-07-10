@@ -117,6 +117,39 @@ tissue, and when the brake is available). Each arm draws on public data or model
 
 ---
 
+### Tier 3 (cont.) — THE TWO-CELL CD44 HUB AND THE HA MOLECULAR-WEIGHT SWITCH (refined this session)
+10. **The axis is a two-cell system, and the "resolution/HA arm" is double-edged — not a clean
+    brake.** Resolving the axis by cell type (CEREBRI snRNA + sorted-bulk GSE276182) gives a
+    sharper mechanistic statement than "microglia accelerate, astrocytes brake":
+    - **Microglia = the accelerator engine.** SPP1/OPN is microglia-dominant (37% vs 18% detection);
+      they carry the DAM/complement program and express **TLR2** (32% of microglia vs 5% of
+      astrocytes) — the sensor that matters below.
+    - **Astrocytes = the resolution potential AND the matrix source, but a conditional one.**
+      Astrocytes are the main **TSG-6/TNFAIP6** producer (1.7% vs 0.3% detection, ~6×) — the pure
+      pro-resolving brake ligand — and the main HA synthesizer (**HAS2**). But under TBI they do
+      *not* simply brake: sorted astrocytes raise the accelerator ligand (SPP1 +4.6), the receptor
+      (CD44 +1.0), HA synthesis (HAS2 +0.8) and the HA-motility receptor (HMMR +1.6), while
+      **suppressing the one pure brake (TSG-6 −0.34, p=0.03)**. So astrocytes are a **bidirectional
+      pivot that tips toward acceleration under injury**, not a static brake.
+    - **CD44 = the shared receptor hub on both cells** (16.5% astrocytes, 10.7% microglia),
+      integrating SPP1 (push) vs TSG-6 (pull) — the two cells converge on one decision node.
+    - **The HA matrix is a molecular-weight switch, and our data point to the inflammatory edge.**
+      High-molecular-weight HA (made by astrocyte HAS enzymes) engages CD44 anti-inflammatory
+      signaling; but under inflammation HMW-HA is depolymerized — enzymatically (HYAL) or by
+      oxidative damage — into **low-molecular-weight fragments that are TLR2/TLR4 agonists**
+      (Scheibner 2006 *J Immunol*; multiple LMW-HA/TLR studies). In our data the degradation enzyme
+      **HYAL1 rises in microglia** (+0.63) — the same cell that carries **TLR2**. So the HA arm is
+      not uniformly protective: astrocytes build the HMW brake matrix, microglia degrade it into
+      pro-inflammatory fragments that feed the exact TLR2→NFκB accelerator this project identified.
+    **Corrected framing:** *microglia drive acceleration; astrocytes hold the brake ligand (TSG-6)
+    but release it under injury while joining the push; both cells meet at a shared CD44 hub; and
+    the HA matrix flips from brake (HMW) to fuel (LMW) as it is degraded.* "Resolution failure" is
+    the astrocyte brake failing and the matrix flipping — not a missing cell type. **Novel** — turns
+    a two-gene-set contrast into a cell-resolved, receptor-convergent, MW-switched circuit, and
+    corrects the naïve "astrocytes = brake" reading with our own directional data.
+
+---
+
 ## Do we now know HOW TBI increases AD risk?
 
 **A specific, mechanistic hypothesis — much sharper than convergence, but not yet proven in
@@ -140,7 +173,8 @@ installs a *durable* accelerator state in humans is the open question (see gaps)
 | Target | Action | Why | Cell-type delivery |
 |--------|--------|-----|--------------------|
 | **NFκB** | inhibit | perturbation predicts NFκB ablation shuts accelerator enhancers; NFκB rises along the transition | microglial-enhancer-driven, to avoid systemic immunosuppression |
-| **SPP1 / CD44 hub** | neutralize ligand / antagonize receptor | CD44 integrates SPP1 (pro-inflammatory) vs TSG-6 (pro-resolving) and gates TLR2/NFκB; OPN-KO cuts 5xFAD plaque 40–60% | microglia + astrocytic CD44 relay |
+| **SPP1 / CD44 hub** | neutralize ligand / antagonize receptor / restore TSG-6 | CD44 is the shared hub on BOTH microglia and astrocytes, integrating SPP1 (push) vs TSG-6 (pull) and gating TLR2/NFκB; OPN-KO cuts 5xFAD plaque 40–60%. Restoring/supplementing TSG-6 (the astrocytic brake that falls under injury) is the pull-side lever | microglia + astrocytic CD44 relay |
+| **HA molecular-weight balance** | block HYAL / favor HMW-HA | LMW-HA fragments are TLR2/TLR4 agonists feeding the microglial NFκB accelerator; HMW-HA is CD44-anti-inflammatory. Inhibiting microglial HYAL or delivering HMW-HA shifts the matrix from fuel back to brake | microglial HYAL; astrocytic HAS/matrix |
 | **MEF2C** | de-repress / restore | MEF2C is the brake; IFN-I suppresses it, so cGAS-STING/IFN-I inhibition would de-repress it | microglia specifically |
 | **CEBPB / C/EBPβ** | lower / degrade | permissive backbone required by both arms; AD-regulated, drives δ-secretase (APP/tau cleavage); COP1/RFWD2 normally degrades it | microglia; dials down the whole enhancer landscape (broader than the NFκB switch) |
 
