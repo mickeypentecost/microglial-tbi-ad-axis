@@ -183,7 +183,7 @@ from GWAS → enhancer → deliverable.
 4. **Two-hit epidemiology** — does TBI × accelerator-genotype predict faster decline in humans?
    → **ADNI-DoD** (see `adni_dod_sidequest.md`, run separately).
 5. **Spatial context — DONE (findings 8–9).** The accelerator concentrates at the AD plaque
-   (Stereo-seq, ρ=−0.28) and the TBI lesion (Visium, ρ=+0.47), with astrocytes co-concentrating
+   (Stereo-seq, geometry-controlled partial ρ=−0.24) and the TBI lesion (Visium, ρ=+0.47), with astrocytes co-concentrating
    peri-plaque (the CD44-shell). The one remaining spatial question is **single-cell adjacency**:
    Visium (55 µm) and Stereo-seq bins average multiple cells, so the accelerator-microglia ↔
    CD44-astrocyte *cell-touching-cell* relay is at the resolution ceiling — the prior Colab CosMx
