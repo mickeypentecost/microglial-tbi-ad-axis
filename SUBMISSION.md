@@ -14,7 +14,7 @@ Traumatic brain injury is among the strongest environmental risk factors for Alz
 
 ---
 
-## Main
+## Results
 
 Genome-wide association studies have established that the common-variant genetic risk for Alzheimer's disease is concentrated in genes expressed by microglia, the brain's resident macrophages, and single-nucleus studies have resolved the pro-inflammatory disease-associated microglial states into which these cells transition during disease¹,³. In parallel, epidemiology has repeatedly identified traumatic brain injury (TBI) as one of the strongest modifiable risk factors for later dementia, and recent work has extended this to the repetitive head impacts sustained in contact sport². These two literatures have developed largely separately. Whether an acute injury and inherited risk act on the same microglial machinery — and if so, where in that machinery each one enters — has not been resolved, in part because injury and disease datasets are generated and analysed in isolation, and in part because a shared response is more naturally described at the level of a coordinated gene program than of any single marker gene.
 
@@ -34,6 +34,14 @@ Plotting each gene's induction in AD tissue against its inherited genetic-risk l
 
 Spatially, the program is not distributed uniformly. In AD Stereo-seq tissue the accelerator score is highest on and adjacent to amyloid plaques and declines monotonically with distance; in TBI Visium tissue it is highest in the region carrying a tissue-damage signature (Spearman ρ = 0.65 between the accelerator score and the injury signature) and falls off away from it (Fig. 4). An independent human cohort of repetitive head impact and low-stage chronic traumatic encephalopathy (GSE261807²; 8 control, 9 repetitive-head-impact, 11 CTE donors), which we scored during this work, was directionally consistent — the accelerator program was elevated most clearly in astrocytes (Cohen's *d* = 0.81, 95% CI 0.05–1.76 for CTE), and the fraction of *SPP1*-positive microglia increased with cumulative exposure (19.7% → 23.7% → 26.2%) — but this cohort is underpowered (n = 8/9/11) and the microglial effect did not reach significance; we report it as supporting, not confirmatory.
 
+![Figure 1](figures/figure1_convergence.png)
+
+**Figure 1 | A single microglial accelerator axis is shared by injury and inherited risk.** **a**, Analysis pipeline: single-cell and bulk expression are scored for the accelerator module, tested across datasets and mapped onto AD genetics. **b**, Module coherence: accelerator gene co-activity (0.074) versus detectability-matched null (0.013), P < 0.01. **c**, Gene-by-gene induction in human AD against mouse TBI, with genes up in both highlighted. **d**, Cross-dataset reproducibility of the accelerator effect (forest plot of effect sizes). **e**, Partitioned heritability: microglial regulatory DNA (1.5% of the genome) carries 31% of AD heritability (P = 1×10⁻⁵). **f**, Synthesis: three independent lines of evidence — blind recovery, induction in both conditions, and concentration of inherited risk — define the 15-gene accelerator program.
+
+![Figure 4](figures/figure4_space_time.png)
+
+**Figure 4 | The program concentrates at the pathology in space.** **a**, AD Stereo-seq plaque location (red = on-plaque, colour = distance to plaque). **b**, Accelerator score in the same coordinate frame. **c**, Accelerator score by distance from plaque. **d**, TBI Visium injury signature (the lesion). **e**, Accelerator score in the same coordinate frame. **f**, Accelerator score by distance from the lesion. Each row reads pathology location → accelerator score → distance gradient; because **b**/**e** share the coordinate frame of **a**/**d**, the correspondence between the accelerator program and the pathology can be read directly.
+
 ### Inherited AD risk loads onto the accelerator arm
 
 We next asked whether AD's common-variant genetics acts on the same circuit, integrating the Bellenguez AD genome-wide association study⁵, a microglial chromatin model of variant effect (Corces C24³,⁶), and stratified linkage-disequilibrium score regression (S-LDSC)⁷ (Fig. 3). Three questions were addressed in sequence. Do AD variants occupy accelerator regulatory elements? Accelerator enhancers showed a 1.56-fold excess of AD variants relative to frequency-matched control variants (P = 0.0022), which persisted with the *APOE* region excluded (P = 9.5×10⁻³); brake enhancers showed no excess. Do those variants alter regulatory activity? AD-associated accelerator variants disrupted microglial chromatin more than non-AD variants (P = 0.005), the strongest being rs3800342 in a *TREM2* enhancer (P = 9.3×10⁻¹² for AD association). How much total heritability lies here? Microglial regulatory DNA, 1.5% of the genome, carried 31% of common-variant AD heritability — a 21-fold enrichment (P = 1.1×10⁻⁵) — and within that signal the direction was accelerator-positive and brake-negative. The concentration of AD heritability in microglial regulatory DNA is itself established³,⁸,⁹; the new observation is its specificity for the pro-inflammatory arm and its avoidance of the pro-resolving arm.
@@ -42,13 +50,25 @@ We next asked whether AD's common-variant genetics acts on the same circuit, int
 
 Convergence does not establish direction. To ask where inherited risk acts within the circuit, we tested colocalization — whether one shared causal variant underlies both an AD-risk signal and a local regulatory signal — across three molecular layers (Fig. 3). In myeloid *cis*-expression QTLs (macrophage and monocyte; signals to P = 3×10⁻²⁷), no accelerator effector gene colocalized with AD risk (maximum PP4 = 0.02), excluding the possibility that whole-brain tissue had diluted a real signal. In primary human microglia chromatin-accessibility QTLs, a genome-wide-significant accessibility signal at *SPP1* (P = 1.5×10⁻¹²) did not colocalize with AD risk (PP4 = 0.06); at *CTSB*, both signals were real but driven by distinct variants (PP3 = 0.97). A three-way analysis found modest accessibility–expression sharing at *C1QA* (PP4 = 0.18) but no sharing of either with AD risk (maximum 0.06). The downstream effector genes are therefore under genuine regulatory control that is nonetheless independent of inherited AD risk. This is the signature of a two-hit architecture: the injury or disease state installs the effector genes, while inherited variants at upstream regulators such as *APOE* and *TREM2* set the threshold at which that installation becomes pathogenic.
 
+![Figure 3](figures/figure3_genetics.png)
+
+**Figure 3 | Inherited risk enters upstream of the effector genes.** **a**, Locus diagram: variant → enhancer → looping → gene activity. **b**, Four-layer heatmap across accelerator genes. **c**, Colocalization positive control: only *APOE* (−log₁₀P = 320) and *TREM2* (26.9) clear genome-wide significance; effector genes do not. **d**, Genetic asymmetry: accelerator 1.48× versus brake 1.09×. **e**, Trigger-versus-threshold synthesis.
+
 ### A two-tier regulatory grammar controls the circuit
 
 To identify the regulators that operate the circuit, we used the chromatin model to perform *in silico* motif ablation — deleting each transcription-factor recognition sequence across all 754 circuit enhancers and measuring the resulting loss of predicted accessibility (Fig. 2). Two roles emerged. SPI1/PU.1 ablation closed enhancers across both arms in a dose-dependent manner (the stronger the motif, the greater the closure; ρ = −0.28, P = 9×10⁻¹⁵), with CEBPB acting similarly — the behaviour expected of lineage-identity factors required for microglial state as such rather than for inflammation specifically. By contrast, NF-κB ablation closed accelerator enhancers specifically (P = 1.9×10⁻⁵), whereas MEF2 ablation did not close brake enhancers, indicating that MEF2C acts as a repressor holding the accelerator off rather than as a general identity factor. Ordering AD microglia from homeostatic to inflamed by diffusion pseudotime, the accelerator transition tracked loss of MEF2C and P2RY12 identity (ρ = −0.49 with a homeostatic-identity score) alongside rising NF-κB and SPI1 activity; *APOE*-ε4 carriers who remained cognitively resilient sat earlier along this trajectory (a directional result, P = 0.05, in a 9-versus-16-donor comparison). The identity role of SPI1 was independently corroborated: a network-based analysis of the microglial regulome¹⁰, using a method unrelated to ours, also named SPI1 the master regulator of both microglial gene regulation and AD risk. CEBPB additionally has a direct disease connection, driving δ-secretase cleavage of APP and tau and being turned over by COP1, which makes it a therapeutic node in its own right.
 
+![Figure 2](figures/figure2_switch.png)
+
+**Figure 2 | A two-tier regulatory grammar operates the circuit.** **a**, Enhancer diagram orienting transcription-factor binding relative to the target gene. **b**, NF-κB ablation closes accelerator enhancers specifically (Δ = −0.029, P = 1.9×10⁻⁵). **c**, MEF2 ablation and the arm-specific comparison. **d**, SPI1 dose–response: stronger motif, greater closure (ρ = −0.28, P = 9×10⁻¹⁵). **e**, Roles summarized: NF-κB activates and MEF2C represses the accelerator; SPI1/CEBPB are lineage-identity factors.
+
 ### Convergence on CD44
 
 The two arms are linked at a single receptor. The accelerator ligand SPP1/osteopontin and the brake ligand TSG-6, working with hyaluronan, compete at CD44, which additionally gates the TLR2/NF-κB accelerator switch (Fig. 5). In sorted-cell injury data the astrocytic side of this circuit amplifies the accelerator inputs — SPP1 (+4.6), CD44 (+1.0), the hyaluronan synthase *HAS2* (+0.8) and the motility receptor *HMMR* (+1.6) all rise — while the one unambiguous brake ligand, TSG-6, falls (−0.34, P = 0.03). CD44 is therefore not a co-expression member of the module but its functional integration point: the receptor at which an engaged accelerator and a disengaged brake are read out together.
+
+![Figure 5](figures/figure5_cd44_hub.png)
+
+**Figure 5 | The two arms converge on CD44.** **a**, Detection of hub genes across microglia and astrocytes. **b**, Astrocyte response under injury: accelerator inputs rise while the brake ligand TSG-6 falls (−0.34, P = 0.03). **c**, Synthesis: SPP1 and hyaluronan push the CD44 receptor while TSG-6 fails to release it, nominating CD44 as a therapeutic node.
 
 ## Discussion
 
@@ -96,29 +116,3 @@ Analysis code, reproducible notebooks and three documented software environments
 12. Iannucci, J. et al. CD44 antagonism after traumatic brain injury influences the adult neurogenic niche and behavioral outcomes. *Brain Struct. Funct.* **231** (2026).
 13. Reed, M. J. et al. Increased hyaluronan and TSG-6 in association with neuropathologic changes of Alzheimer's disease. *J. Alzheimers Dis.* **67**, 91–102 (2019).
 14. Bolte, A. C. et al. The meningeal transcriptional response to traumatic brain injury and aging. *eLife* **12**, e81154 (2023).
-
-## Figure legends
-
-![Figure 1](figures/figure1_convergence.png)
-
-**Figure 1 | A single microglial accelerator axis is shared by injury and inherited risk.** **a**, Analysis pipeline: single-cell and bulk expression are scored for the accelerator module, tested across datasets and mapped onto AD genetics. **b**, Module coherence: accelerator gene co-activity (0.074) versus detectability-matched null (0.013), P < 0.01. **c**, Gene-by-gene induction in human AD against mouse TBI, with genes up in both highlighted. **d**, Cross-dataset reproducibility of the accelerator effect (forest plot of effect sizes). **e**, Partitioned heritability: microglial regulatory DNA (1.5% of the genome) carries 31% of AD heritability (P = 1×10⁻⁵). **f**, Synthesis: three independent lines of evidence — blind recovery, induction in both conditions, and concentration of inherited risk — define the 15-gene accelerator program.
-
-![Figure 2](figures/figure2_switch.png)
-
-**Figure 2 | A two-tier regulatory grammar operates the circuit.** **a**, Enhancer diagram orienting transcription-factor binding relative to the target gene. **b**, NF-κB ablation closes accelerator enhancers specifically (Δ = −0.029, P = 1.9×10⁻⁵). **c**, MEF2 ablation and the arm-specific comparison. **d**, SPI1 dose–response: stronger motif, greater closure (ρ = −0.28, P = 9×10⁻¹⁵). **e**, Roles summarized: NF-κB activates and MEF2C represses the accelerator; SPI1/CEBPB are lineage-identity factors.
-
-![Figure 3](figures/figure3_genetics.png)
-
-**Figure 3 | Inherited risk enters upstream of the effector genes.** **a**, Locus diagram: variant → enhancer → looping → gene activity. **b**, Four-layer heatmap across accelerator genes. **c**, Colocalization positive control: only *APOE* (−log₁₀P = 320) and *TREM2* (26.9) clear genome-wide significance; effector genes do not. **d**, Genetic asymmetry: accelerator 1.48× versus brake 1.09×. **e**, Trigger-versus-threshold synthesis.
-
-![Figure 4](figures/figure4_space_time.png)
-
-**Figure 4 | The program concentrates at the pathology in space.** **a**, AD Stereo-seq plaque location (red = on-plaque, colour = distance to plaque). **b**, Accelerator score in the same coordinate frame. **c**, Accelerator score by distance from plaque. **d**, TBI Visium injury signature (the lesion). **e**, Accelerator score in the same coordinate frame. **f**, Accelerator score by distance from the lesion. Each row reads pathology location → accelerator score → distance gradient; because **b**/**e** share the coordinate frame of **a**/**d**, the correspondence between the accelerator program and the pathology can be read directly.
-
-![Figure 5](figures/figure5_cd44_hub.png)
-
-**Figure 5 | The two arms converge on CD44.** **a**, Detection of hub genes across microglia and astrocytes. **b**, Astrocyte response under injury: accelerator inputs rise while the brake ligand TSG-6 falls (−0.34, P = 0.03). **c**, Synthesis: SPP1 and hyaluronan push the CD44 receptor while TSG-6 fails to release it, nominating CD44 as a therapeutic node.
-
----
-
-*Team ≤ 2 · non-confidential submission · public data only · analysis performed during the event.*
