@@ -137,10 +137,16 @@ tissue, and when the brake is available). Each arm draws on public data or model
       High-molecular-weight HA (made by astrocyte HAS enzymes) engages CD44 anti-inflammatory
       signaling; but under inflammation HMW-HA is depolymerized — enzymatically (HYAL) or by
       oxidative damage — into **low-molecular-weight fragments that are TLR2/TLR4 agonists**
-      (Scheibner 2006 *J Immunol*; multiple LMW-HA/TLR studies). In our data the degradation enzyme
-      **HYAL1 rises in microglia** (+0.63) — the same cell that carries **TLR2**. So the HA arm is
-      not uniformly protective: astrocytes build the HMW brake matrix, microglia degrade it into
-      pro-inflammatory fragments that feed the exact TLR2→NFκB accelerator this project identified.
+      (Scheibner 2006 *J Immunol*, PMID 16818787; multiple LMW-HA/TLR studies). The decisive point
+      we *can* ground in our data: **TLR2 — the LMW-HA sensor — is microglial** (32% of microglia vs
+      5% of astrocytes). So whichever cell fragments the matrix, the pro-inflammatory HA signal is
+      read out by microglia, feeding the exact TLR2→NFκB accelerator this project identified. *(The
+      degrading enzyme's cell source is NOT resolved in our data — HYAL1's TBI direction conflicts
+      between snRNA, where it edges down in microglia and up in astrocytes, and sorted-bulk, where
+      the microglial delta is +0.63 but not significant; and LMW-HA fragmentation is also
+      non-enzymatic/oxidative. We therefore do not attribute the degradation step to a cell type.)*
+      The HA arm is thus not uniformly protective: astrocytes build the HMW brake matrix, and its
+      degradation products are sensed by the microglial TLR2 accelerator.
     **Corrected framing:** *microglia drive acceleration; astrocytes hold the brake ligand (TSG-6)
     but release it under injury while joining the push; both cells meet at a shared CD44 hub; and
     the HA matrix flips from brake (HMW) to fuel (LMW) as it is degraded.* "Resolution failure" is
