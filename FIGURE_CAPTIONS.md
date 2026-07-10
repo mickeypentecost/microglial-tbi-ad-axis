@@ -107,9 +107,9 @@ diseases, shown here on real tissue.
   plaque or lesion, and the score is averaged per ring (panels B and D).
 
 *Timing (from the CEREBRI injury time-course, described in the text): the
-microglial accelerator peaks around 7 days after injury (score 1.24, up from 0.77
-at 24 h, settling to 0.70 by 6 months), while the brake stays essentially flat
-near zero (0.059 → −0.023 → 0.008) — the brake is a phase that never fully engages.*
+microglial accelerator peaks around 7 days after injury (score ~1.24, up from
+~0.77 at 24 h, settling to ~0.70 by 6 months), while the brake stays essentially
+flat near zero at every time point — the brake is a phase that never fully engages.*
 
 ---
 
