@@ -1,5 +1,7 @@
 # A shared microglial resolution-failure axis links brain injury to Alzheimer's disease
 
+**Mickey Pentecost, PhD**
+
 *Built with Claude — Life Sciences Hackathon · Researcher Track submission*
 
 ---
