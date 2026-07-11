@@ -148,7 +148,10 @@ brake trajectory across ATN stages (Supplementary Fig. 2f,g):
 - **Ali et al. 2025** (*Neuron*; PMID 40088886; DOI 10.1016/j.neuron.2025.02.014), multi-cohort
   CSF SomaScan. Supplementary table `mmc2.xlsx`, sheet S1 (per-contrast summary statistics with
   A−T−/A+T−/A+T+ ATN staging). Used the amyloid-onset (A−T− vs A+T−), tau-emergence
-  (A+T− vs A+T+) and full-AD contrasts (Discovery estimates) for the axis genes. NOTE: a
+  (A+T− vs A+T+) and full-AD contrasts (Discovery estimates) for the axis genes. Proteins with
+  multiple SomaScan aptamers are aggregated by the MEAN estimate across aptamers (a stated
+  aggregate, not a most-significant-aptamer selection); FDR is recomputed Benjamini-Hochberg
+  across the axis genes within each contrast. NOTE: a
   separate 2026 Ali/Cruchaga paper (PMID 41916283, the AD/DLB/FTD/PD differential-abundance
   analysis) is a *different* deposit and is not the ATN-staged source used here.
 - **Guo et al. 2024** (*Nat. Hum. Behav.* **8**, 2047–2066; PMID 38987357), PPMI CSF SomaScan.

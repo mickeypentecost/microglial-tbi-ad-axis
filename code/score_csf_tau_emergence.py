@@ -10,8 +10,10 @@ Sources (download the supplementary tables from the publishers):
     mmc2.xlsx, sheet 'S1_Summary_Statistics' — multi-header per-contrast summary stats with
     A-T-/A+T-/A+T+ ATN staging. Columns used (Discovery block): Symbol; amyloid onset
     (A-T- vs A+T-) estimate/P/FDR; tau emergence (A+T- vs A+T+) estimate/P/FDR; full AD
-    (A-T- vs A+T+) estimate/P/FDR. SomaScan has multiple aptamers/protein — collapse to the
-    minimum-P aptamer per gene symbol.
+    (A-T- vs A+T+) estimate/P/FDR. SomaScan has multiple aptamers/protein — the per-protein
+    estimate is the MEAN across all aptamers (a stated aggregate, not a min-P winner's-curse
+    selection); the reported P is the aptamer nearest that mean and FDR is Benjamini-Hochberg
+    across the axis genes within each contrast. n_aptamers is recorded per gene.
   Guo et al. 2024, Nat. Hum. Behav. (PMID 38987357) — PPMI CSF SomaScan, MOESM3_ESM.xlsx
     sheet ST4 (per-group protein differences across the ATN continuum); corroborating only.
 

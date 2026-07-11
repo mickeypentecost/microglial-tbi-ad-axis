@@ -68,8 +68,6 @@ def main():
     ax.set_yticklabels(sel["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("\u0394 mean log-expr (TBI \u2212 Ctrl),\nmicroglia", fontsize=8.3)
     ax.set_xlim(-0.42, 0.32)
-    ax.text(0.5, 1.04, "HA sensor / receptor / brake ligands",
-            transform=ax.transAxes, ha="center", fontsize=8, color="0.4")
     stamp(ax, "a")
 
     # b: sorted-astrocyte bulk
@@ -89,8 +87,6 @@ def main():
     ax.set_yticks(y)
     ax.set_yticklabels(ab["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("\u0394 log\u2082 (TBI \u2212 Ctrl),\nsorted astrocyte bulk", fontsize=8.3)
-    ax.text(0.5, 1.04, "HAS2 up but TSG-6 (TNFAIP6) falls",
-            transform=ax.transAxes, ha="center", fontsize=8, color="0.4")
     stamp(ax, "b")
 
     # c: four fragmentation routes
@@ -108,8 +104,6 @@ def main():
     ax.set_yticklabels(dg["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("% of TBI microglia detecting", fontsize=8.3)
     ax.set_xlim(0, 44)
-    ax.text(0.5, 1.04, "Enzymatic degraders at floor; only NOX2 route measurable",
-            transform=ax.transAxes, ha="center", fontsize=7.4, color="0.4")
     stamp(ax, "c")
 
     # d: accelerator-brake imbalance
@@ -125,8 +119,8 @@ def main():
     ax.set_xticklabels(["Control", "TBI"], fontsize=9.5)
     ax.set_ylabel("Accelerator \u2212 brake imbalance\n(per-sample z-score)", fontsize=8.5)
     ax.set_xlim(-0.5, 1.5)
-    ax.text(0.02, 0.02, "injury shifts imbalance\nto accelerator (P = 1\u00d710\u207b\u2074)",
-            transform=ax.transAxes, ha="left", va="bottom", fontsize=7, color=ACC)
+    ax.text(0.02, 0.98, "P = 1\u00d710\u207b\u2074", transform=ax.transAxes,
+            ha="left", va="top", fontsize=7.5, color=ACC)
     stamp(ax, "d")
 
     # e: reproducibility forest
@@ -144,8 +138,6 @@ def main():
     ax.set_xlabel("Brake-module d (95% CI)", fontsize=8.3)
     ax.set_ylim(-0.6, 1.6)
     ax.set_xlim(-1.9, 1.1)
-    ax.text(0.5, 0.97, "up in chronic AD,\ndown in acute TBI",
-            transform=ax.transAxes, ha="center", va="top", fontsize=7, color="0.35", style="italic")
     stamp(ax, "e")
 
     # f: human CSF brake-ligand trajectory across the ATN continuum (SomaScan)
@@ -165,8 +157,6 @@ def main():
     ax.set_ylabel("\u0394 CSF level (log\u2082, vs A\u2212T\u2212)", fontsize=8.5)
     ax.set_xlim(-0.25, 2.25)
     ax.legend(fontsize=7.0, loc="lower left", frameon=False)
-    ax.text(0.97, 0.55, "CSF brake ligands rise at\namyloid, fall at tau\n(SomaScan)",
-            transform=ax.transAxes, ha="right", va="top", fontsize=7, color="0.35", style="italic")
     stamp(ax, "f")
 
     # g: full axis at tau emergence (A+T- -> A+T+), accelerator up / brake down — own row
@@ -190,8 +180,6 @@ def main():
     from matplotlib.patches import Patch
     ax.legend(handles=[Patch(color=ACC, label="accelerator"), Patch(color=BRK, label="brake")],
               fontsize=7.5, loc="upper right", frameon=False)
-    ax.set_title("Coordinated axis at tau emergence (A+T\u2212 \u2192 A+T+, n = 735): accelerators up, brake ligands down",
-                 fontsize=8, color="0.35", style="italic", pad=6)
     stamp(ax, "g")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
