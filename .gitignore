@@ -11,6 +11,8 @@ corces/
 # GWAS sumstats (755 MB)
 *_buildGRCh38.tsv.gz
 ad_gwas_*.parquet
+# image-inspection preview scratch (never part of the submission)
+_view_*.png
 # python
 __pycache__/
 *.pyc

@@ -6,7 +6,7 @@
 
 ---
 
-## Summary
+## Abstract
 
 Traumatic brain injury is among the strongest environmental risk factors for Alzheimer's disease, yet how a discrete physical injury and a lifetime of inherited genetic risk arrive at the same disease remains unclear. Here we ask whether the two act on a shared microglial substrate, and identify a single inflammatory program on which they converge. We defined a pro-inflammatory "accelerator" module and a pro-resolving "brake" module from established biology, in advance of any analysis, and found that the accelerator behaves as a genuinely coordinated program in human Alzheimer's microglia and is recovered without supervision, whereas the brake is not coherently engaged. Reanalysis of public single-nucleus data showed that the same accelerator genes are induced in both human Alzheimer's and mouse post-injury microglia, and spatial data placed the program directly at amyloid plaques and at the injury lesion. Partitioned-heritability analysis localized much of the common-variant Alzheimer's heritability to microglial regulatory DNA, loading specifically onto the accelerator arm while avoiding the brake. Colocalization across three molecular layers indicated that inherited risk enters upstream, through the established genes *APOE* and *TREM2*, rather than through the downstream effector genes, which are instead installed by the injury or disease state — the molecular form of a two-hit model. Finally, both arms are read out at one receptor, CD44, where the accelerator ligand osteopontin and the pro-resolving ligand TSG-6 compete. These results define a shared, brake-deficient microglial axis and nominate CD44 and its upstream regulators as testable nodes for intervention across injury- and genetically-driven dementia.
 
