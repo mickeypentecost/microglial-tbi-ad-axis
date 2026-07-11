@@ -5,7 +5,9 @@ Reproduces figures/supplementary_figure3_regulatory.png from tracked result CSVs
   results/insilico_perturbation.csv  (panel a — NF-kB / MEF2 motif ablation)
   results/cebpb_perturbation.csv     (panel b — SPI1 dose-response)
   results/pseudotime_drivers.csv     (panel c — trajectory)
-  results/cte_validation.csv         (panel d — CTE cohort forest)
+  results/cte_validation.csv         (panel d — CTE snRNA cohort forest)
+  results/cte_proteomics_mckee.csv        (panel e — CTE proteomics module by McKee stage)
+  results/cte_proteomics_protein_trends.csv (panel e — per-protein stage trend)
 
 The SPI1 dose-response Spearman rho (panel b) is recomputed at runtime from
 insilico_perturbation.csv (reproduces rho = -0.28, P = 9e-15). The NF-kB ablation
@@ -50,12 +52,14 @@ def main():
     cb = pd.read_csv(f"{R}/cebpb_perturbation.csv").dropna(subset=["SPI1_delta", "SPI1_score"])
     ps = pd.read_csv(f"{R}/pseudotime_drivers.csv")
     cte = pd.read_csv(f"{R}/cte_validation.csv")
+    ctp = pd.read_csv(f"{R}/cte_proteomics_mckee.csv")
+    ctp_tr = pd.read_csv(f"{R}/cte_proteomics_protein_trends.csv").dropna()
 
     rho, _ = spearmanr(cb["SPI1_score"], cb["SPI1_delta"])
 
-    fig = plt.figure(figsize=(13.2, 10.0))
-    gs = fig.add_gridspec(2, 2, hspace=0.40, wspace=0.28,
-                          left=0.09, right=0.965, top=0.94, bottom=0.09)
+    fig = plt.figure(figsize=(13.2, 14.6))
+    gs = fig.add_gridspec(3, 2, hspace=0.42, wspace=0.28,
+                          left=0.09, right=0.965, top=0.955, bottom=0.06)
 
     # a: NF-kB (accelerator) vs MEF2 (protective) ablation
     ax = fig.add_subplot(gs[0, 0])
@@ -129,6 +133,47 @@ def main():
     ax.text(0.5, 1.02, "Chronic human injury: astrocyte arms clear zero, microglia underpowered",
             transform=ax.transAxes, ha="center", fontsize=7.6, color="0.35", style="italic")
     stamp(ax, "d")
+
+    # e-left: accelerator module by McKee stage (second CTE cohort, proteomics)
+    HL = "#e67e22"
+    ax = fig.add_subplot(gs[2, 0])
+    order = ["Control", "CTE1", "CTE2", "CTE3", "CTE4"]
+    stage_cols = [NEU, "#e8b3a8", "#dd8b7a", "#cf6450", ACC]
+    data = [ctp[ctp["FullDx"] == s]["acc_score"].values for s in order]
+    bp = ax.boxplot(data, positions=range(5), widths=0.6, patch_artist=True,
+                    showfliers=False, medianprops=dict(color="0.15", lw=1.3))
+    for patch, c in zip(bp["boxes"], stage_cols):
+        patch.set_facecolor(c); patch.set_alpha(0.75); patch.set_edgecolor("0.3")
+    rng = np.random.default_rng(1)
+    for i, vals in enumerate(data):
+        ax.scatter(i + rng.uniform(-0.16, 0.16, len(vals)), vals, s=10,
+                   color="0.25", zorder=3, alpha=0.6, edgecolor="none")
+    ax.axhline(0, color="0.5", lw=0.8, ls="--")
+    rho_s, p_s = spearmanr(ctp["stage"], ctp["acc_score"])
+    ax.set_xticks(range(5)); ax.set_xticklabels(["Ctrl", "I", "II", "III", "IV"], fontsize=9)
+    ax.set_xlabel("McKee CTE stage", fontsize=9.5)
+    ax.set_ylabel("accelerator module score", fontsize=9)
+    ax.text(0.03, 0.97, f"\u03c1 = {rho_s:.2f}\nP = {p_s:.3f}", transform=ax.transAxes,
+            fontsize=8.5, va="top", ha="left", color=ACC)
+    ax.text(0.5, 1.02, "Second CTE cohort (proteomics): accelerator rises with severity",
+            transform=ax.transAxes, ha="center", fontsize=7.8, color="0.4")
+    stamp(ax, "e")
+
+    # e-right: per-protein trend vs McKee stage
+    ax = fig.add_subplot(gs[2, 1])
+    tr = ctp_tr.sort_values("rho")
+    barc = [ACC if v > 0 else NEU for v in tr["rho"]]
+    yy = np.arange(len(tr))
+    ax.barh(yy, tr["rho"], color=barc, edgecolor="0.3", lw=0.5, height=0.72)
+    ax.axvline(0, color="0.4", lw=0.8)
+    ax.set_yticks(yy); ax.set_yticklabels(tr["gene"], fontsize=8.3, fontstyle="italic")
+    ax.set_xlabel("Spearman \u03c1 vs McKee stage", fontsize=9)
+    for gi, g in enumerate(tr["gene"].values):
+        if g == "CD44":
+            ax.text(tr["rho"].values[gi] + 0.02, gi, "hub", fontsize=7,
+                    color=HL, va="center", fontweight="bold")
+    ax.text(0.5, 1.02, "Carried by LGALS3 / ITGAX / C1q / CD44, not SPP1",
+            transform=ax.transAxes, ha="center", fontsize=7.8, color="0.4")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
     print(f"wrote {OUT}")

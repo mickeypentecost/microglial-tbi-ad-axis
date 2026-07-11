@@ -119,3 +119,21 @@ manner.
 - **GSE203424** — Sierksma/INPP5D APP/PS1 mouse, 10x Visium 55 µm (3 PSAPP + 3 WT untreated).
   NCBI GEO, open. Used for the genotype-contrast Visium panel (accelerator up in amyloid; spatial
   focality genotype-independent — the resolution ceiling that motivated the Stereo-seq step).
+
+## Chronic traumatic encephalopathy (human trauma-tauopathy) validation
+
+- **GSE261807** — Butler et al. 2025 (*Nature* **647**, 228–237; PMID 40963024), repetitive head
+  impact and low-stage CTE cortex, single-nucleus RNA-seq (8 control / 9 RHI / 11 CTE donors).
+  NCBI GEO, open. Filtered count matrices scored for the accelerator/brake modules in microglia
+  and astrocytes (Supplementary Fig. 3d).
+- **Emory/Boston University CTE brain proteomics** — Gutierrez-Quiceno et al. 2021
+  (*Mol. Neurodegener.* **16**, 40; PMID 34172091), TMT mass-spectrometry of frontal/temporal
+  cortex, 43 CTE across McKee stages I–IV + 23 controls (plus other tauopathies). Deposited
+  open-access on Synapse (`syn51217209`); we used `EmoryCTE_2xTAMPOR_9152x87_log2(...).csv`
+  (protein × sample matrix) and the matched traits table. Reanalysed here for the accelerator
+  module dose–response across McKee stage (Fig. 1d forest row; Supplementary Fig. 3e). Brake
+  ligands are below the MS detection floor, so only the accelerator arm is tested.
+- **GSE155114** — Chancellor/Stein et al., "Altered oligodendroglia and astroglia in CTE",
+  human CTE white-matter single-nucleus RNA-seq (8 CTE / 8 control, inDrops). NCBI GEO, open.
+  Directionally concordant supporting cohort (microglial accelerator/brake positive but
+  underpowered); values in `results/gse155114_cte_snrna_modules.csv`, not shown as a figure.

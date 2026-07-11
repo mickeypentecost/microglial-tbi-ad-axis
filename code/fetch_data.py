@@ -79,6 +79,15 @@ DATASETS = {
         "files": [],
         "role": "human repetitive-head-impact / CTE snRNA (Supp 3 validation). Per-sample GSM tar; see DATA_PROVENANCE.",
     },
+    "GSE155114": {
+        "files": ["GSE155114_RAW.tar"],
+        "role": "human CTE white-matter snRNA (second CTE cohort, supporting; Supp 3e text). Open GEO tar.",
+    },
+    # Emory/BU CTE brain proteomics (Fig 1d forest row + Supp 3e) is deposited on
+    # Synapse (syn51217209, published Gutierrez-Quiceno et al. 2021, PMID 34172091),
+    # open-access but behind a Synapse login — not auto-fetchable here. Download
+    # EmoryCTE_2xTAMPOR_9152x87_log2(...).csv + the traits table via synapseclient
+    # (syn.get("syn51217282"), syn.get("syn51217281")); see DATA_PROVENANCE.
 }
 
 CTX = ssl.create_default_context()
