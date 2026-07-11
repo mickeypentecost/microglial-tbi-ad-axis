@@ -133,8 +133,10 @@ manner.
   (protein × sample matrix) and the matched traits table. Reanalysed here for the accelerator
   module dose–response across McKee stage (Fig. 1d forest row; Supplementary Fig. 3e). Brake
   ligands are below the MS detection floor, so only the accelerator arm is tested.
-- **GSE155114** — Chancellor/Stein et al., "Altered oligodendroglia and astroglia in CTE",
-  human CTE white-matter single-nucleus RNA-seq (8 CTE / 8 control, inDrops). NCBI GEO, open.
+- **GSE155114** — Chancellor KB, Chancellor SE, Duke-Cohan JE, ..., McKee AC. "Altered
+  oligodendroglia and astroglia in chronic traumatic encephalopathy." *Acta Neuropathol.*
+  142, 295–321 (2021); PMID 34019156; DOI 10.1007/s00401-021-02322-2.
+  Human CTE white-matter single-nucleus RNA-seq (8 CTE / 8 control, inDrops). NCBI GEO, open.
   Directionally concordant supporting cohort (microglial accelerator/brake positive but
   underpowered); values in `results/gse155114_cte_snrna_modules.csv`, not shown as a figure.
 
