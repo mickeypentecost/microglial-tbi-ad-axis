@@ -7,9 +7,11 @@ Reproduces figures/supplementary_figure3_regulatory.png from tracked result CSVs
   results/pseudotime_drivers.csv     (panel c — trajectory)
   results/cte_validation.csv         (panel d — CTE cohort forest)
 
-The SPI1 dose-response Spearman rho and the NF-kB ablation p-value are recomputed
-from the CSVs here (both reproduce the validated Fig 2 statistics: rho = -0.28,
-P = 9e-15; NF-kB P = 1.9e-5).
+The SPI1 dose-response Spearman rho (panel b) is recomputed at runtime from
+insilico_perturbation.csv (reproduces rho = -0.28, P = 9e-15). The NF-kB ablation
+p-value annotated in panel a (P = 1.9e-5) is the validated Fig 2 statistic
+(Mann-Whitney, Methods) carried as a literal — the panel plots the per-enhancer
+ablation deltas from the CSV, but the arm-contrast test itself is not re-run here.
 
 Usage:  python figures/build_supplementary_figure3.py
 Env:    ENV 1 (analysis) — numpy, pandas, scipy, matplotlib
