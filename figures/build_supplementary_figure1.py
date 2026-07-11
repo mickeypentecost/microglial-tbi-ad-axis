@@ -108,8 +108,12 @@ def main():
     yy = np.arange(4)[::-1]
     for (n, c, z, sig), y in zip(zr, yy):
         ax.barh(y, z, color=c, edgecolor="0.3", lw=0.6, height=0.6, alpha=0.9 if sig else 0.8)
-        ax.text(z + (0.15 if z > 0 else -0.15), y, f"z={z:+.2f}", va="center",
-                ha="left" if z > 0 else "right", fontsize=8.5, color=c, fontweight="bold")
+        if z > 2.5:  # long bar — label sits inside the tip so it doesn't crowd panel D
+            ax.text(z - 0.12, y, f"z={z:+.2f}", va="center", ha="right",
+                    fontsize=8.5, color="white", fontweight="bold")
+        else:
+            ax.text(z + (0.15 if z > 0 else -0.15), y, f"z={z:+.2f}", va="center",
+                    ha="left" if z > 0 else "right", fontsize=8.5, color=c, fontweight="bold")
     ax.axvline(0, color="0.4", lw=0.8, ls="--")
     ax.axvline(1.96, color="0.6", lw=0.7, ls=":")
     ax.text(1.96, 3.6, "P<0.05", fontsize=7, color="0.5", ha="center")
