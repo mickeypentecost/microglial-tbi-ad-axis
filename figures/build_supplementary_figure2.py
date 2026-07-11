@@ -7,6 +7,8 @@ Reproduces figures/supplementary_figure2_brake.png from tracked result CSVs:
   results/ha_degraders_cerebri.csv     (panel c — four fragmentation routes)
   results/imbalance_ratio_cerebri.csv  (panel d — accelerator-brake imbalance)
   results/brake_forest.csv             (panel e — reproducibility forest)
+  results/csf_tau_emergence_axis.csv   (panels f,g — human CSF SomaScan across ATN)
+  results/csf_imbalance_test.csv       (panel g annotation — composite imbalance)
 
 Usage:  python figures/build_supplementary_figure2.py
 Env:    ENV 1 (analysis) — numpy, pandas, matplotlib
@@ -40,10 +42,12 @@ def main():
     deg = pd.read_csv(f"{R}/ha_degraders_cerebri.csv")
     imb = pd.read_csv(f"{R}/imbalance_ratio_cerebri.csv")
     forest = pd.read_csv(f"{R}/brake_forest.csv")
+    csf = pd.read_csv(f"{R}/csf_tau_emergence_axis.csv")
+    csf_imb = pd.read_csv(f"{R}/csf_imbalance_test.csv")
 
-    fig = plt.figure(figsize=(14.0, 9.6))
-    gs = fig.add_gridspec(2, 6, hspace=0.46, wspace=1.5,
-                          left=0.07, right=0.975, top=0.93, bottom=0.10)
+    fig = plt.figure(figsize=(14.0, 14.6))
+    gs = fig.add_gridspec(3, 6, hspace=0.52, wspace=1.5,
+                          left=0.07, right=0.975, top=0.955, bottom=0.06)
 
     # a: microglial HA machinery
     ax = fig.add_subplot(gs[0, 0:2])
@@ -140,6 +144,53 @@ def main():
     ax.set_title("Brake fails the \u22653-dataset bar: up in chronic AD, down in acute TBI",
                  fontsize=7.8, color="0.35", style="italic", pad=6)
     stamp(ax, "e")
+
+    # f: human CSF brake-ligand trajectory across the ATN continuum (SomaScan)
+    # cumulative estimate from A-T- baseline: amyloid onset, then tau emergence
+    ax = fig.add_subplot(gs[2, 0:3])
+    stages = ["A\u2212T\u2212", "A+T\u2212", "A+T+"]
+    xs = [0, 1, 2]
+    for gene, col, mk in [("TNFAIP6", BRK, "o"), ("TGFB1", AST, "s")]:
+        g = csf[csf["gene"] == gene].set_index("contrast")["estimate"]
+        onset = g.get("A-T- vs A+T- (amyloid onset)", np.nan)
+        emerg = g.get("A+T- vs A+T+ (tau emergence)", np.nan)
+        traj = [0.0, onset, onset + emerg]  # cumulative log2 vs A-T-
+        lab = "TSG-6 (TNFAIP6)" if gene == "TNFAIP6" else gene
+        ax.plot(xs, traj, marker=mk, color=col, lw=2, ms=7, label=lab, zorder=3)
+    ax.axhline(0, color="0.6", lw=0.8, ls="--")
+    ax.set_xticks(xs); ax.set_xticklabels(stages, fontsize=9)
+    ax.set_ylabel("\u0394 CSF level (log\u2082, vs A\u2212T\u2212)", fontsize=8.5)
+    ax.set_xlim(-0.25, 2.25)
+    ax.legend(fontsize=7.6, loc="lower left", frameon=False)
+    ax.annotate("brake mounts\nat amyloid", xy=(1.28, 0.006), fontsize=7, color="0.4", ha="left")
+    ax.set_title("Human CSF: brake ligands rise at amyloid, fall at tau emergence (SomaScan)",
+                 fontsize=7.8, color="0.35", style="italic", pad=6)
+    stamp(ax, "f")
+
+    # g: full axis at tau emergence (A+T- -> A+T+), accelerator up / brake down
+    ax = fig.add_subplot(gs[2, 3:6])
+    te = csf[csf["contrast"] == "A+T- vs A+T+ (tau emergence)"].copy()
+    # collapse to one row per gene (already one per gene here), sort by estimate
+    te = te.sort_values("estimate")
+    y = np.arange(len(te))
+    cols = [ACC if a == "accelerator" else BRK for a in te["arm"]]
+    ax.barh(y, te["estimate"], color=cols, edgecolor="0.3", lw=0.4, height=0.72)
+    ax.axvline(0, color="0.4", lw=0.8)
+    ax.set_yticks(y)
+    ylabs = ["TSG-6" if g == "TNFAIP6" else g for g in te["gene"]]
+    ax.set_yticklabels(ylabs, fontsize=6.6, fontstyle="italic")
+    ax.set_xlabel("\u0394 at tau emergence (A+T\u2212 \u2192 A+T+), log\u2082", fontsize=8.3)
+    # mark TSG-6 P
+    ts_p = te[te["gene"] == "TNFAIP6"]["P"].iloc[0]
+    ti = list(te["gene"]).index("TNFAIP6")
+    ax.text(0.10, ti, f"TSG-6 P = {ts_p:.0e}", fontsize=6.2, color=BRK,
+            va="center", ha="left")
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=ACC, label="accelerator"), Patch(color=BRK, label="brake")],
+              fontsize=7, loc="lower right", frameon=False)
+    ax.set_title("Coordinated axis at tau emergence: accelerators up, brake ligands down",
+                 fontsize=7.6, color="0.35", style="italic", pad=6)
+    stamp(ax, "g")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
     print(f"wrote {OUT}")

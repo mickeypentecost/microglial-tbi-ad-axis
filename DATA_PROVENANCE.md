@@ -137,3 +137,24 @@ manner.
   human CTE white-matter single-nucleus RNA-seq (8 CTE / 8 control, inDrops). NCBI GEO, open.
   Directionally concordant supporting cohort (microglial accelerator/brake positive but
   underpowered); values in `results/gse155114_cte_snrna_modules.csv`, not shown as a figure.
+
+## Human CSF proteomics across the amyloid–tau continuum (brake-ligand measurement)
+
+The resolution brake ligands TSG-6 (TNFAIP6) and TGFB1 are below the detection floor of
+brain-tissue mass spectrometry and single-nucleus RNA; they are reliably quantified only on
+affinity proteomic platforms (SomaScan/Olink). Two published CSF SomaScan resources provide the
+brake trajectory across ATN stages (Supplementary Fig. 2f,g):
+
+- **Ali et al. 2025** (*Neuron*; PMID 40088886; DOI 10.1016/j.neuron.2025.02.014), multi-cohort
+  CSF SomaScan. Supplementary table `mmc2.xlsx`, sheet S1 (per-contrast summary statistics with
+  A−T−/A+T−/A+T+ ATN staging). Used the amyloid-onset (A−T− vs A+T−), tau-emergence
+  (A+T− vs A+T+) and full-AD contrasts (Discovery estimates) for the axis genes. NOTE: a
+  separate 2026 Ali/Cruchaga paper (PMID 41916283, the AD/DLB/FTD/PD differential-abundance
+  analysis) is a *different* deposit and is not the ATN-staged source used here.
+- **Guo et al. 2024** (*Nat. Hum. Behav.* **8**, 2047–2066; PMID 38987357), PPMI CSF SomaScan.
+  Supplementary `MOESM3_ESM.xlsx`, sheet ST4 (per-group protein differences across the ATN
+  continuum) — corroborating the TSG-6/TGFB1 amyloid-onset vs tau-emergence directions.
+
+Reanalysed here into `results/csf_tau_emergence_axis.csv` (per-gene estimate/P/FDR at each ATN
+contrast) and `results/csf_imbalance_test.csv` (accelerator−brake composite). Both papers are
+published; only our computed statistics are stored, no participant-level data.
