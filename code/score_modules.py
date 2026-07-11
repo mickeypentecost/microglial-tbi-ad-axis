@@ -48,8 +48,14 @@ def _match_symbols(module, var_names, species):
     return present
 
 
-def score_object(adata, genes, species="human"):
-    """Return a per-cell module score (mean z across present module genes)."""
+def score_object(adata, genes, species="human", library_sizes=None):
+    """Return a per-cell module score (mean z across present module genes).
+
+    If the matrix looks like raw counts, it is normalized to log1p(CP10K). The
+    per-cell library size MUST be the whole-transcriptome total, computed BEFORE
+    subsetting to the module genes — pass it via `library_sizes` (an array aligned
+    to adata.n_obs). main() computes this from the full matrix and passes it in.
+    """
     import scipy.sparse as sp
     present = _match_symbols(genes, list(adata.var_names), species)
     if not present:
@@ -60,9 +66,14 @@ def score_object(adata, genes, species="human"):
     X = X.toarray() if sp.issparse(X) else np.asarray(X)
     # log-normalize to log1p(CP10K) if the matrix looks like raw counts
     if np.nanmax(X) > 50:
-        lib = np.asarray(adata.X.sum(1)).ravel() if not adata.isbacked else None
-        # fall back to per-cell sum over the full matrix when available
-        totals = lib if lib is not None else X.sum(1)
+        if library_sizes is None:
+            raise ValueError(
+                "matrix looks like raw counts but no whole-transcriptome "
+                "library_sizes were provided; summing only the module-gene "
+                "subset would give a wrong denominator. Pass library_sizes "
+                "computed from the full matrix (main() does this)."
+            )
+        totals = np.asarray(library_sizes, dtype=float).ravel().copy()
         totals[totals == 0] = 1
         X = np.log1p(X / totals[:, None] * 1e4)
     z = (X - X.mean(0)) / (X.std(0) + 1e-9)
@@ -81,13 +92,18 @@ def main():
     a = ap.parse_args()
 
     import anndata as ad
+    import scipy.sparse as sp
     adata = ad.read_h5ad(a.h5ad, backed="r")
     if a.celltype_col and a.celltype:
         mask = adata.obs[a.celltype_col].astype(str) == a.celltype
         adata = adata[mask.values].to_memory()
 
-    acc, acc_genes = score_object(adata, ACCELERATOR, a.species)
-    brk, brk_genes = score_object(adata, BRAKE, a.species)
+    # Whole-transcriptome per-cell library size, computed BEFORE gene subsetting.
+    Xfull = adata.X
+    libsizes = np.asarray(Xfull.sum(1)).ravel() if sp.issparse(Xfull) else np.asarray(Xfull).sum(1)
+
+    acc, acc_genes = score_object(adata, ACCELERATOR, a.species, library_sizes=libsizes)
+    brk, brk_genes = score_object(adata, BRAKE, a.species, library_sizes=libsizes)
     df = pd.DataFrame({
         "condition": adata.obs[a.condition_col].astype(str).values,
         "accelerator": acc,

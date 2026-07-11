@@ -31,7 +31,7 @@ and write the PNGs in `figures/`. They require no raw data and no network.
 |---|---|---|
 | Fig 1 — convergence | `figures/build_figure1.py` | `crossarm_convergence.csv`, `f1_sldsc.csv`, `f1_forest.csv`, `f1_coherence.json` |
 | Fig 2 — space & time | `figures/build_figure2.py` | `ad_tissue_spots.csv`, `f4_tbi_tissue.csv`, `f4_ad_grad.csv`, `f4_tbi_grad.csv` |
-| Fig 3 — genetics | `figures/build_figure3.py` | `full_circuit.csv`, `coloc_positive_control.csv`, `f1_sldsc.csv`, `f1_forest.csv`, `f1_coherence.json` |
+| Fig 3 — genetics | `figures/build_figure3.py` | `full_circuit.csv`, `coloc_positive_control.csv` |
 | Fig 4 — regulatory switch | `figures/build_figure4.py` | `f2_cebpb.csv`, `f2_stats.json`, `trajectory_drivers.csv` |
 | Fig 5 — CD44 hub | `figures/build_figure5.py` | `f5_hub.csv`, `f5_astro.csv` |
 | Supp 1 — genetic anchor | `figures/build_supplementary_figure1.py` | `enrichment_results.csv`, `chrombpnet_allelic_scores.csv`, `sldsc_results.csv`, `coloc_mr_results.csv`, `caqtl_formal_coloc.csv`, `moloc_threeway.csv` |

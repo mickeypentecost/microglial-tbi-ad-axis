@@ -26,27 +26,9 @@ GEN = PALETTE["genetics"]
 NEU = PALETTE["neutral"]
 HL = PALETTE["highlight"]
 
-import urllib.request, json as _json
-_pc_url = "https://raw.githubusercontent.com/mickeypentecost/microglial-tbi-ad-axis/main/coloc_positive_control.csv"
-try:
-    pc = pd.read_csv(_pc_url)
-except Exception:
-    pc = pd.DataFrame({
-        "gene": ["APOE", "TREM2", "SPP1", "CD68", "TLR2"],
-        "control_class": ["positive control", "positive control", "accelerator effector", "accelerator effector", "accelerator effector"],
-        "neglog10_caQTL": [8.5, 6.2, 11.0, 4.5, 3.8],
-        "neglog10_AD": [320.0, 26.9, 2.1, 1.5, 1.2],
-    })
-
-_fc_data = {
-    "gene": ["SPP1", "APOE", "TREM2", "TLR2", "GPNMB", "C1QA", "C3", "ITGAX"],
-    "arm": ["accelerator"] * 8,
-    "L1_AD_risk": [0.1, 0.9, 0.85, 0.05, 0.2, 0.3, 0.25, 0.15],
-    "L2_caQTL": [0.95, 0.7, 0.8, 0.6, 0.5, 0.45, 0.4, 0.55],
-    "L3_loop": [0.8, 0.75, 0.9, 0.5, 0.6, 0.55, 0.5, 0.45],
-    "L4_expr": [0.9, 0.85, 0.8, 0.7, 0.65, 0.6, 0.55, 0.5],
-}
-fc = pd.DataFrame(_fc_data)
+# All panel data reads from tracked results/*.csv (no network, no hardcoded fallback).
+pc = pd.read_csv(os.path.join(RES, "coloc_positive_control.csv"))
+fc = pd.read_csv(os.path.join(RES, "full_circuit.csv"))
 
 fig = plt.figure(figsize=(16.4, 5.4))
 gs = fig.add_gridspec(1, 5, width_ratios=[1.15, 1.05, 1.0, 0.58, 1.05], wspace=0.44, left=0.04, right=0.99, top=0.90, bottom=0.17)
