@@ -1,0 +1,24 @@
+{
+  "name": "remotion-video",
+  "version": "1.0.0",
+  "description": "Motion graphics generated with Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render Explainer out/explainer.mp4 --codec=h264 --crf=18",
+    "render:scene1": "remotion render Explainer out/scene1.mp4 --frames=0-599",
+    "upgrade": "remotion upgrade"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.487",
+    "@remotion/google-fonts": "^4.0.487",
+    "@remotion/shapes": "^4.0.487",
+    "@remotion/transitions": "^4.0.487",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.487"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.0",
+    "typescript": "5.9.3"
+  }
+}
