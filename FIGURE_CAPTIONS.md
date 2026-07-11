@@ -246,7 +246,7 @@ stated at the resolution the data support.
 Colocalization of AD GWAS with myeloid (macrophage/monocyte) expression QTLs — the
 cell-type-matched test that removes the "bulk-brain dilution" objection. Despite
 strong eQTLs for the effector genes (e.g. *SPP1*, *ATP8B4*), no accelerator
-effector colocalizes with AD risk (maximum PP4 = 0.022). The effector genes are
+effector colocalizes with AD risk (maximum PP4 = 0.009 across the tested genes). The effector genes are
 where the program acts, not where inherited risk enters.
 
 ## Extended Data Figure 9 — Enhancer-level (caQTL) and three-way colocalization
@@ -256,10 +256,12 @@ where the program acts, not where inherited risk enters.
 Microglial chromatin-accessibility QTLs resolve the same split at the enhancer
 level: accelerator/effector enhancers have strong caQTLs (e.g. *SPP1*
 caQTL P = 1.5×10⁻¹²) but the AD signal in those same peaks is weak (regional
-minimum P ≈ 3.7×10⁻³, not genome-wide significant). A three-way (caQTL–eQTL–GWAS)
-colocalization reaches at most PP4 = 0.18 (*C1QA*). Only *APOE* and *TREM2* carry
-genome-wide-significant inherited risk; the effectors are installed downstream —
-*trigger ≠ threshold*.
+minimum P ≈ 3.7×10⁻³, not genome-wide significant). In a joint caQTL–eQTL–GWAS
+test, the strongest sharing is between accessibility and expression at *C1QA*
+(PP4 = 0.18), while sharing of either signal with AD risk stays near zero
+(maximum PP4 ≈ 0.06) — regulated effectors, but not GWAS-driven. Only *APOE* and
+*TREM2* carry genome-wide-significant inherited risk; the effectors are installed
+downstream — *trigger ≠ threshold*.
 
 ---
 
