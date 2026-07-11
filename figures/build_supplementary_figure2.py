@@ -45,9 +45,10 @@ def main():
     csf = pd.read_csv(f"{R}/csf_tau_emergence_axis.csv")
     csf_imb = pd.read_csv(f"{R}/csf_imbalance_test.csv")
 
-    fig = plt.figure(figsize=(14.0, 14.6))
-    gs = fig.add_gridspec(3, 6, hspace=0.52, wspace=1.5,
-                          left=0.07, right=0.975, top=0.955, bottom=0.06)
+    fig = plt.figure(figsize=(14.0, 13.2))
+    gs = fig.add_gridspec(3, 6, hspace=0.60, wspace=1.5,
+                          height_ratios=[1.0, 1.0, 0.85],
+                          left=0.07, right=0.975, top=0.955, bottom=0.07)
 
     # a: microglial HA machinery
     ax = fig.add_subplot(gs[0, 0:2])
@@ -112,7 +113,7 @@ def main():
     stamp(ax, "c")
 
     # d: accelerator-brake imbalance
-    ax = fig.add_subplot(gs[1, 0:3])
+    ax = fig.add_subplot(gs[1, 0:2])
     grp = [("Control", imb[imb["condition"] == "Control"]["imbalance"], NEU),
            ("TBI", imb[imb["condition"] == "TBI"]["imbalance"], ACC)]
     for i, (n, v, c) in enumerate(grp):
@@ -124,12 +125,12 @@ def main():
     ax.set_xticklabels(["Control", "TBI"], fontsize=9.5)
     ax.set_ylabel("Accelerator \u2212 brake imbalance\n(per-sample z-score)", fontsize=8.5)
     ax.set_xlim(-0.5, 1.5)
-    ax.set_title("CEREBRI microglia: imbalance shifts toward accelerator under injury (MWU P = 1\u00d710\u207b\u2074)",
-                 fontsize=8, color=ACC, fontweight="bold", pad=6)
+    ax.text(0.02, 0.02, "injury shifts imbalance\nto accelerator (P = 1\u00d710\u207b\u2074)",
+            transform=ax.transAxes, ha="left", va="bottom", fontsize=7, color=ACC)
     stamp(ax, "d")
 
     # e: reproducibility forest
-    ax = fig.add_subplot(gs[1, 3:6])
+    ax = fig.add_subplot(gs[1, 2:4])
     y = np.arange(len(forest))[::-1]
     for yi, (_, r) in zip(y, forest.iterrows()):
         c = ACC if r["d"] < 0 else BRK
@@ -137,17 +138,19 @@ def main():
         ax.scatter([r["d"]], [yi], s=70, color=c, edgecolor="0.2", lw=0.6, zorder=3)
     ax.axvline(0, color="0.5", lw=0.8, ls="--")
     ax.set_yticks(y)
-    ax.set_yticklabels(forest["dataset"], fontsize=8.5)
-    ax.set_xlabel("Brake-module effect size (Cohen's d, 95% CI)", fontsize=8.5)
+    short = {"SEA-AD (human AD, snRNA)": "SEA-AD\n(human AD)",
+             "CEREBRI (mouse TBI, snRNA)": "CEREBRI\n(mouse TBI)"}
+    ax.set_yticklabels([short.get(d, d) for d in forest["dataset"]], fontsize=7.6)
+    ax.set_xlabel("Brake-module d (95% CI)", fontsize=8.3)
     ax.set_ylim(-0.6, 1.6)
     ax.set_xlim(-1.9, 1.1)
-    ax.set_title("Brake fails the \u22653-dataset bar: up in chronic AD, down in acute TBI",
-                 fontsize=7.8, color="0.35", style="italic", pad=6)
+    ax.text(0.5, 0.97, "up in chronic AD,\ndown in acute TBI",
+            transform=ax.transAxes, ha="center", va="top", fontsize=7, color="0.35", style="italic")
     stamp(ax, "e")
 
     # f: human CSF brake-ligand trajectory across the ATN continuum (SomaScan)
     # cumulative estimate from A-T- baseline: amyloid onset, then tau emergence
-    ax = fig.add_subplot(gs[2, 0:3])
+    ax = fig.add_subplot(gs[1, 4:6])
     stages = ["A\u2212T\u2212", "A+T\u2212", "A+T+"]
     xs = [0, 1, 2]
     for gene, col, mk in [("TNFAIP6", BRK, "o"), ("TGFB1", AST, "s")]:
@@ -161,35 +164,35 @@ def main():
     ax.set_xticks(xs); ax.set_xticklabels(stages, fontsize=9)
     ax.set_ylabel("\u0394 CSF level (log\u2082, vs A\u2212T\u2212)", fontsize=8.5)
     ax.set_xlim(-0.25, 2.25)
-    ax.legend(fontsize=7.6, loc="lower left", frameon=False)
-    ax.annotate("brake mounts\nat amyloid", xy=(1.28, 0.006), fontsize=7, color="0.4", ha="left")
-    ax.set_title("Human CSF: brake ligands rise at amyloid, fall at tau emergence (SomaScan)",
-                 fontsize=7.8, color="0.35", style="italic", pad=6)
+    ax.legend(fontsize=7.0, loc="center left", frameon=False)
+    ax.text(0.97, 0.55, "CSF brake ligands rise at\namyloid, fall at tau\n(SomaScan)",
+            transform=ax.transAxes, ha="right", va="top", fontsize=7, color="0.35", style="italic")
     stamp(ax, "f")
 
-    # g: full axis at tau emergence (A+T- -> A+T+), accelerator up / brake down
-    ax = fig.add_subplot(gs[2, 3:6])
+    # g: full axis at tau emergence (A+T- -> A+T+), accelerator up / brake down — own row
+    ax = fig.add_subplot(gs[2, 1:5])
     te = csf[csf["contrast"] == "A+T- vs A+T+ (tau emergence)"].copy()
-    # collapse to one row per gene (already one per gene here), sort by estimate
-    te = te.sort_values("estimate")
-    y = np.arange(len(te))
+    # sort descending so accelerators (positive) are on the left
+    te = te.sort_values("estimate", ascending=False).reset_index(drop=True)
+    x = np.arange(len(te))
     cols = [ACC if a == "accelerator" else BRK for a in te["arm"]]
-    ax.barh(y, te["estimate"], color=cols, edgecolor="0.3", lw=0.4, height=0.72)
-    ax.axvline(0, color="0.4", lw=0.8)
-    ax.set_yticks(y)
-    ylabs = ["TSG-6" if g == "TNFAIP6" else g for g in te["gene"]]
-    ax.set_yticklabels(ylabs, fontsize=6.6, fontstyle="italic")
-    ax.set_xlabel("\u0394 at tau emergence (A+T\u2212 \u2192 A+T+), log\u2082", fontsize=8.3)
+    ax.bar(x, te["estimate"], color=cols, edgecolor="0.3", lw=0.4, width=0.72)
+    ax.axhline(0, color="0.4", lw=0.8)
+    ax.set_xticks(x)
+    xlabs = ["TSG-6" if g == "TNFAIP6" else g for g in te["gene"]]
+    ax.set_xticklabels(xlabs, fontsize=6.8, fontstyle="italic", rotation=90)
+    ax.set_ylabel("\u0394 at tau emergence\n(A+T\u2212 \u2192 A+T+), log\u2082", fontsize=8.3)
     # mark TSG-6 P
     ts_p = te[te["gene"] == "TNFAIP6"]["P"].iloc[0]
     ti = list(te["gene"]).index("TNFAIP6")
-    ax.text(0.10, ti, f"TSG-6 P = {ts_p:.0e}", fontsize=6.2, color=BRK,
-            va="center", ha="left")
+    ax.annotate(f"TSG-6\nP = {ts_p:.0e}", xy=(ti, te["estimate"].iloc[ti]),
+                xytext=(ti - 3.5, -0.03), fontsize=6.5, color=BRK, ha="center",
+                arrowprops=dict(arrowstyle="->", color=BRK, lw=0.8))
     from matplotlib.patches import Patch
     ax.legend(handles=[Patch(color=ACC, label="accelerator"), Patch(color=BRK, label="brake")],
-              fontsize=7, loc="lower right", frameon=False)
-    ax.set_title("Coordinated axis at tau emergence: accelerators up, brake ligands down",
-                 fontsize=7.6, color="0.35", style="italic", pad=6)
+              fontsize=7.5, loc="upper right", frameon=False)
+    ax.set_title("Coordinated axis at tau emergence (A+T\u2212 \u2192 A+T+, n = 735): accelerators up, brake ligands down",
+                 fontsize=8, color="0.35", style="italic", pad=6)
     stamp(ax, "g")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
