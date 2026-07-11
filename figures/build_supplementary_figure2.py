@@ -164,7 +164,7 @@ def main():
     ax.set_xticks(xs); ax.set_xticklabels(stages, fontsize=9)
     ax.set_ylabel("\u0394 CSF level (log\u2082, vs A\u2212T\u2212)", fontsize=8.5)
     ax.set_xlim(-0.25, 2.25)
-    ax.legend(fontsize=7.0, loc="center left", frameon=False)
+    ax.legend(fontsize=7.0, loc="lower left", frameon=False)
     ax.text(0.97, 0.55, "CSF brake ligands rise at\namyloid, fall at tau\n(SomaScan)",
             transform=ax.transAxes, ha="right", va="top", fontsize=7, color="0.35", style="italic")
     stamp(ax, "f")
@@ -185,9 +185,8 @@ def main():
     # mark TSG-6 P
     ts_p = te[te["gene"] == "TNFAIP6"]["P"].iloc[0]
     ti = list(te["gene"]).index("TNFAIP6")
-    ax.annotate(f"TSG-6\nP = {ts_p:.0e}", xy=(ti, te["estimate"].iloc[ti]),
-                xytext=(ti - 3.5, -0.03), fontsize=6.5, color=BRK, ha="center",
-                arrowprops=dict(arrowstyle="->", color=BRK, lw=0.8))
+    ax.text(ti, 0.006, f"TSG-6\nP = {ts_p:.0e}", fontsize=6.5, color=BRK,
+            ha="center", va="bottom")
     from matplotlib.patches import Patch
     ax.legend(handles=[Patch(color=ACC, label="accelerator"), Patch(color=BRK, label="brake")],
               fontsize=7.5, loc="upper right", frameon=False)
