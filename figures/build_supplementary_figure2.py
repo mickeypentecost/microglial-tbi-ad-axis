@@ -32,8 +32,10 @@ plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
                      "axes.spines.right": False, "svg.fonttype": "none"})
 
 
-def stamp(ax, letter):
-    ax.set_title(letter, loc="left", fontweight="bold", fontsize=13, pad=4)
+def stamp(ax, letter, dx=-0.16):
+    # match main-figure panel letters: capital, bold, size 13, top-left outside axes
+    ax.text(dx, 1.05, letter, transform=ax.transAxes, fontsize=13,
+            fontweight="bold", va="bottom", ha="right")
 
 
 def main():
@@ -44,6 +46,7 @@ def main():
     forest = pd.read_csv(f"{R}/brake_forest.csv")
     csf = pd.read_csv(f"{R}/csf_tau_emergence_axis.csv")
     csf_imb = pd.read_csv(f"{R}/csf_imbalance_test.csv")
+    csf_apt = pd.read_csv(f"{R}/csf_brake_aptamers.csv")
 
     fig = plt.figure(figsize=(14.0, 13.2))
     gs = fig.add_gridspec(3, 6, hspace=0.60, wspace=1.5,
@@ -68,7 +71,7 @@ def main():
     ax.set_yticklabels(sel["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("\u0394 mean log-expr (TBI \u2212 Ctrl),\nmicroglia", fontsize=8.3)
     ax.set_xlim(-0.42, 0.32)
-    stamp(ax, "a")
+    stamp(ax, "A")
 
     # b: sorted-astrocyte bulk
     ax = fig.add_subplot(gs[0, 2:4])
@@ -87,7 +90,7 @@ def main():
     ax.set_yticks(y)
     ax.set_yticklabels(ab["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("\u0394 log\u2082 (TBI \u2212 Ctrl),\nsorted astrocyte bulk", fontsize=8.3)
-    stamp(ax, "b")
+    stamp(ax, "B")
 
     # c: four fragmentation routes
     ax = fig.add_subplot(gs[0, 4:6])
@@ -104,7 +107,7 @@ def main():
     ax.set_yticklabels(dg["gene"], fontsize=8.5, fontstyle="italic")
     ax.set_xlabel("% of TBI microglia detecting", fontsize=8.3)
     ax.set_xlim(0, 44)
-    stamp(ax, "c")
+    stamp(ax, "C")
 
     # d: accelerator-brake imbalance
     ax = fig.add_subplot(gs[1, 0:2])
@@ -121,7 +124,7 @@ def main():
     ax.set_xlim(-0.5, 1.5)
     ax.text(0.02, 0.98, "P = 1\u00d710\u207b\u2074", transform=ax.transAxes,
             ha="left", va="top", fontsize=7.5, color=ACC)
-    stamp(ax, "d")
+    stamp(ax, "D")
 
     # e: reproducibility forest
     ax = fig.add_subplot(gs[1, 2:4])
@@ -138,26 +141,29 @@ def main():
     ax.set_xlabel("Brake-module d (95% CI)", fontsize=8.3)
     ax.set_ylim(-0.6, 1.6)
     ax.set_xlim(-1.9, 1.1)
-    stamp(ax, "e")
+    stamp(ax, "E")
 
     # f: human CSF brake-ligand trajectory across the ATN continuum (SomaScan)
     # cumulative estimate from A-T- baseline: amyloid onset, then tau emergence
     ax = fig.add_subplot(gs[1, 4:6])
     stages = ["A\u2212T\u2212", "A+T\u2212", "A+T+"]
     xs = [0, 1, 2]
-    for gene, col, mk in [("TNFAIP6", BRK, "o"), ("TGFB1", AST, "s")]:
-        g = csf[csf["gene"] == gene].set_index("contrast")["estimate"]
-        onset = g.get("A-T- vs A+T- (amyloid onset)", np.nan)
-        emerg = g.get("A+T- vs A+T+ (tau emergence)", np.nan)
-        traj = [0.0, onset, onset + emerg]  # cumulative log2 vs A-T-
-        lab = "TSG-6 (TNFAIP6)" if gene == "TNFAIP6" else gene
-        ax.plot(xs, traj, marker=mk, color=col, lw=2, ms=7, label=lab, zorder=3)
+    # TGFB1: three SomaScan aptamers plotted separately (they disagree in direction) — faint
+    tgf = csf_apt[csf_apt["gene"] == "TGFB1"]
+    for i, (_, r) in enumerate(tgf.iterrows()):
+        ax.plot(xs, [r["cum_AmT"], r["cum_ApT"], r["cum_ApTp"]], marker="s", color=AST,
+                lw=1.0, ms=4, alpha=0.5, zorder=2,
+                label="TGFB1 aptamers (n=3)" if i == 0 else None)
+    # TSG-6: single clean aptamer — bold
+    ts = csf_apt[csf_apt["gene"] == "TNFAIP6"].iloc[0]
+    ax.plot(xs, [ts["cum_AmT"], ts["cum_ApT"], ts["cum_ApTp"]], marker="o", color=BRK,
+            lw=2.4, ms=7, zorder=3, label="TSG-6 (single aptamer)")
     ax.axhline(0, color="0.6", lw=0.8, ls="--")
     ax.set_xticks(xs); ax.set_xticklabels(stages, fontsize=9)
     ax.set_ylabel("\u0394 CSF level (log\u2082, vs A\u2212T\u2212)", fontsize=8.5)
     ax.set_xlim(-0.25, 2.25)
-    ax.legend(fontsize=7.0, loc="lower left", frameon=False)
-    stamp(ax, "f")
+    ax.legend(fontsize=6.6, loc="lower left", frameon=False)
+    stamp(ax, "F")
 
     # g: full axis at tau emergence (A+T- -> A+T+), accelerator up / brake down — own row
     ax = fig.add_subplot(gs[2, 1:5])
@@ -180,7 +186,7 @@ def main():
     from matplotlib.patches import Patch
     ax.legend(handles=[Patch(color=ACC, label="accelerator"), Patch(color=BRK, label="brake")],
               fontsize=7.5, loc="upper right", frameon=False)
-    stamp(ax, "g")
+    stamp(ax, "G")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
     print(f"wrote {OUT}")
