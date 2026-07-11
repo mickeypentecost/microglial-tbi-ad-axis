@@ -32,8 +32,9 @@ plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
                      "axes.spines.right": False, "svg.fonttype": "none"})
 
 
-def stamp(ax, letter):
-    ax.set_title(letter, loc="left", fontweight="bold", fontsize=13, pad=4)
+def stamp(ax, letter, dx=-0.16):
+    ax.text(dx, 1.05, letter, transform=ax.transAxes, fontsize=13,
+            fontweight="bold", va="bottom", ha="right")
 
 
 def main():
@@ -71,7 +72,7 @@ def main():
     ax.text(2, 0.07, "0 variants", ha="center", va="bottom", fontsize=8, color=BRK)
     ax.text(0.97, 0.06, "no enrichment (OR=1)", transform=ax.transAxes,
             ha="right", va="bottom", fontsize=7.5, color="0.5")
-    stamp(ax, "a")
+    stamp(ax, "A")
 
     # b: ChromBPNet scatter
     ax = fig.add_subplot(gs[0, 1])
@@ -94,9 +95,9 @@ def main():
     ax.set_ylim(-0.002, 0.062)
     ax.legend(loc="upper right", fontsize=8, frameon=False, handletextpad=0.3,
               bbox_to_anchor=(1.0, 0.83))
-    ax.text(0.98, 0.97, "AD-associated accelerator variants\ndisrupt chromatin more (MWU P = 0.005)",
-            transform=ax.transAxes, ha="right", va="top", fontsize=8, color="0.3")
-    stamp(ax, "b")
+    ax.text(0.98, 0.97, "MWU P = 0.005", transform=ax.transAxes,
+            ha="right", va="top", fontsize=8, color="0.3")
+    stamp(ax, "B")
 
     # c: S-LDSC z forest (arm z-scores are the validated summary statistics)
     ax = fig.add_subplot(gs[1, 0])
@@ -122,11 +123,11 @@ def main():
     _sup = str.maketrans("0123456789-", "\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079\u207b")
     _mant, _exp = f"{_ep:.1e}".split("e")
     _ptxt = f"{_mant}\u00d710{str(int(_exp)).translate(_sup)}"
-    ax.text(0.5, 1.06,
-            f"Microglial DNA: {_ph2:.0f}% of AD heritability, {_enr:.0f}\u00d7 enrichment, P = {_ptxt}",
-            transform=ax.transAxes, ha="center", va="bottom", fontsize=8.3,
-            color=GEN, fontweight="bold")
-    stamp(ax, "c")
+    ax.text(0.97, 0.06,
+            f"{_ph2:.0f}% of h\u00b2, {_enr:.0f}\u00d7, P = {_ptxt}",
+            transform=ax.transAxes, ha="right", va="bottom", fontsize=8.0,
+            color=GEN)
+    stamp(ax, "C")
 
     # d: coloc layers (values computed above from CSVs)
     ax = fig.add_subplot(gs[1, 1])
@@ -143,10 +144,7 @@ def main():
     ax.set_yticklabels([n for n, _ in layers], fontsize=8.3)
     ax.set_xlim(0, 1.0)
     ax.set_xlabel("Max posterior prob. of shared causal variant (PP4)", fontsize=8.8)
-    ax.text(0.5, -0.24, "Effectors regulated but AD-independent \u2014 inherited risk enters only at\n"
-            "APOE/TREM2 (trigger \u2260 threshold)", transform=ax.transAxes, ha="center",
-            va="top", fontsize=7.6, color="0.35", style="italic")
-    stamp(ax, "d")
+    stamp(ax, "D")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
     print(f"wrote {OUT}")

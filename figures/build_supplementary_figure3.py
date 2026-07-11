@@ -38,8 +38,9 @@ plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
                      "axes.spines.right": False, "svg.fonttype": "none"})
 
 
-def stamp(ax, letter):
-    ax.set_title(letter, loc="left", fontweight="bold", fontsize=13, pad=4)
+def stamp(ax, letter, dx=-0.16):
+    ax.text(dx, 1.05, letter, transform=ax.transAxes, fontsize=13,
+            fontweight="bold", va="bottom", ha="right")
 
 
 def dci(d, n1, n2):
@@ -80,9 +81,7 @@ def main():
     ax.set_ylabel("\u0394 predicted accessibility\non motif ablation", fontsize=9)
     ax.text(0, nf.min() - 0.006, "P = 1.9\u00d710\u207b\u2075", ha="center", va="top",
             fontsize=8, color=ACC, fontweight="bold")
-    ax.text(0.5, 1.02, "Arm-specific switch: NF-\u03baB closes the accelerator",
-            transform=ax.transAxes, ha="center", fontsize=8, color="0.4")
-    stamp(ax, "a")
+    stamp(ax, "A")
 
     # b: SPI1 dose-response
     ax = fig.add_subplot(gs[0, 1])
@@ -94,9 +93,9 @@ def main():
     ax.set_xlabel("SPI1 motif strength (score)", fontsize=9.5)
     ax.set_ylabel("\u0394 predicted accessibility on\nSPI1 ablation", fontsize=9)
     ax.set_ylim(np.percentile(cb["SPI1_delta"], 1.5), np.percentile(cb["SPI1_delta"], 98.5))
-    ax.text(0.5, 1.02, f"Identity factor: dose-dependent, both arms (\u03c1 = {rho:.2f}, P = 9\u00d710\u207b\u00b9\u2075)",
-            transform=ax.transAxes, ha="center", fontsize=8, color="0.4")
-    stamp(ax, "b")
+    ax.text(0.97, 0.05, f"\u03c1 = {rho:.2f}, P = 9\u00d710\u207b\u00b9\u2075",
+            transform=ax.transAxes, ha="right", va="bottom", fontsize=8, color="0.4")
+    stamp(ax, "B")
 
     # c: pseudotime drivers
     ax = fig.add_subplot(gs[1, 0])
@@ -108,9 +107,7 @@ def main():
     ax.set_yticks(y)
     ax.set_yticklabels(ps["gene"], fontsize=8.3, fontstyle="italic")
     ax.set_xlabel("Spearman \u03c1 vs resting\u2192inflamed pseudotime", fontsize=9)
-    ax.text(0.5, 1.02, "Accelerator up, homeostatic/brake down along one axis (\u03c1 = \u22120.49)",
-            transform=ax.transAxes, ha="center", fontsize=7.8, color="0.4")
-    stamp(ax, "c")
+    stamp(ax, "C")
 
     # d: CTE forest
     ax = fig.add_subplot(gs[1, 1])
@@ -130,9 +127,7 @@ def main():
     ax.set_yticklabels([r[0] for r in rows], fontsize=8.3)
     ax.set_xlabel("Effect size in CTE cortex (Cohen's d, 95% CI)", fontsize=9)
     ax.set_xlim(-1.0, 2.0)
-    ax.text(0.5, 1.02, "Chronic human injury: astrocyte arms clear zero, microglia underpowered",
-            transform=ax.transAxes, ha="center", fontsize=7.6, color="0.35", style="italic")
-    stamp(ax, "d")
+    stamp(ax, "D")
 
     # e-left: accelerator module by McKee stage (second CTE cohort, proteomics)
     HL = "#e67e22"
@@ -155,9 +150,7 @@ def main():
     ax.set_ylabel("accelerator module score", fontsize=9)
     ax.text(0.03, 0.97, f"\u03c1 = {rho_s:.2f}\nP = {p_s:.3f}", transform=ax.transAxes,
             fontsize=8.5, va="top", ha="left", color=ACC)
-    ax.text(0.5, 1.02, "Second CTE cohort (proteomics): accelerator rises with severity",
-            transform=ax.transAxes, ha="center", fontsize=7.8, color="0.4")
-    stamp(ax, "e")
+    stamp(ax, "E")
 
     # e-right: per-protein trend vs McKee stage
     ax = fig.add_subplot(gs[2, 1])
@@ -172,8 +165,6 @@ def main():
         if g == "CD44":
             ax.text(tr["rho"].values[gi] + 0.02, gi, "hub", fontsize=7,
                     color=HL, va="center", fontweight="bold")
-    ax.text(0.5, 1.02, "Carried by LGALS3 / ITGAX / C1q / CD44, not SPP1",
-            transform=ax.transAxes, ha="center", fontsize=7.8, color="0.4")
 
     fig.savefig(OUT, dpi=200, bbox_inches="tight")
     print(f"wrote {OUT}")
