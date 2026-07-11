@@ -127,7 +127,7 @@ def main():
     _sup = str.maketrans("0123456789-", "\u2070\u00b9\u00b2\u00b3\u2074\u2075\u2076\u2077\u2078\u2079\u207b")
     _mant, _exp = f"{_ep:.1e}".split("e")
     _ptxt = f"{_mant}\u00d710{str(int(_exp)).translate(_sup)}"
-    ax.text(0.97, 0.13,
+    ax.text(1.0, 0.06,
             f"{_ph2:.0f}% of h\u00b2, {_enr:.0f}\u00d7, P = {_ptxt}",
             transform=ax.transAxes, ha="right", va="bottom", fontsize=8.0,
             color=GEN)
