@@ -70,8 +70,6 @@ def main():
             fontsize=8.3, color=ACC, fontweight="bold")
     ax.text(1, ors[1] + 0.07, "P = 0.70", ha="center", va="bottom", fontsize=8, color="0.4")
     ax.text(2, 0.10, "0 variants", ha="center", va="bottom", fontsize=8, color=BRK)
-    ax.text(0.02, 1.02, "no enrichment (OR=1)", transform=ax.get_yaxis_transform(),
-            ha="left", va="bottom", fontsize=7.5, color="0.5")
     stamp(ax, "A")
 
     # b: ChromBPNet scatter
