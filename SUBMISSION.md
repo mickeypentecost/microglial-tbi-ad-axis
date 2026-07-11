@@ -154,7 +154,7 @@ Analysis code, reproducible notebooks and three documented software environments
 15. Cell type-resolved proteomics reveals intra- and intercellular signaling in Alzheimer's disease. *bioRxiv* (2026) [PMID 41676658].
 16. Single plaque proteomics reveals the composition and dynamics of the amyloid microenvironment in Alzheimer's disease. *bioRxiv* (2026) [PMID 41676572].
 17. Gutierrez-Quiceno, L. et al. A proteomic network approach resolves stage-specific molecular phenotypes in chronic traumatic encephalopathy. *Mol. Neurodegener.* **16**, 40 (2021).
-18. Ali, M. et al. Multi-cohort cerebrospinal fluid proteomics identifies robust molecular signatures across the Alzheimer's disease continuum. *Neuron* **113**, 1345–1360 (2025).
+18. Ali, M. et al. Multi-cohort cerebrospinal fluid proteomics identifies robust molecular signatures across the Alzheimer's disease continuum. *Neuron* **113**, 1363–1379 (2025).
 19. Guo, Y. et al. Multiplex cerebrospinal fluid proteomics identifies biomarkers for diagnosis and prediction of Alzheimer's disease. *Nat. Hum. Behav.* **8**, 2047–2066 (2024).
 
 ---
