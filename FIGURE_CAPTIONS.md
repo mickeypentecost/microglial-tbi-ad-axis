@@ -158,10 +158,11 @@ data during this work.
   coefficient z = 3.62). Arm annotations are individually underpowered (CIs cross
   zero) but accelerator is positive and brake negative — direction, not
   significance.
-- **D — Causal direction.** Colocalization across myeloid eQTL, microglia caQTL,
-  and a joint three-way test never approaches the PP4 = 0.8 threshold. Effectors
-  are regulated but AD-independent; risk enters only at *APOE*/*TREM2*
-  (trigger ≠ threshold).
+- **D — Causal direction.** Colocalization never approaches the PP4 = 0.8
+  threshold: myeloid eQTL (max PP4 = 0.009), formal microglia-caQTL coloc (max
+  PP4 = 0.06 at *CD68*), and the three-way test's sharing of either regulatory
+  signal with AD risk (max PP4 = 0.06). Effectors are regulated but AD-independent;
+  risk enters only at *APOE*/*TREM2* (trigger ≠ threshold).
 
 ## Supplementary Figure 2 — The resolution brake: mechanism and measurement limits
 
