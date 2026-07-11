@@ -1,0 +1,13 @@
+gene,cell_type,condition,mean_logCPM,pct_detect,n_cells
+Tnfaip6,Microglia,TBI,0.0045,0.28,94994
+Cd44,Microglia,TBI,0.1889,10.67,94994
+Spp1,Microglia,TBI,0.9708,37.44,94994
+Tlr2,Microglia,TBI,0.6033,32.22,94994
+Has2,Microglia,TBI,0.0001,0.01,94994
+Anxa1,Microglia,TBI,0.0479,2.8,94994
+Tnfaip6,Astrocyte,TBI,0.0289,1.72,2497
+Cd44,Astrocyte,TBI,0.2999,16.54,2497
+Spp1,Astrocyte,TBI,0.3545,17.9,2497
+Tlr2,Astrocyte,TBI,0.082,5.29,2497
+Has2,Astrocyte,TBI,0.032,2.8,2497
+Anxa1,Astrocyte,TBI,0.2628,14.3,2497

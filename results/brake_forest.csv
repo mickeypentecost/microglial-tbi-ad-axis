@@ -1,0 +1,3 @@
+dataset,d,lo,hi,note
+"SEA-AD (human AD, snRNA)",0.402,-0.03,0.834,microglia
+"CEREBRI (mouse TBI, snRNA)",-0.886,-1.643,-0.128,microglia — brake suppressed

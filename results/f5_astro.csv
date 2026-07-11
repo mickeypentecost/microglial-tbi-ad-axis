@@ -1,0 +1,8 @@
+gene,role,log2fc,p
+Spp1,accelerator ligand,4.63,0.016
+Hmmr,HA-motility receptor,1.58,0.016
+Socs3,brake (partial),1.53,0.016
+Cd44,shared receptor,1.04,0.016
+Tgfb1,brake (partial),0.85,0.016
+Has2,HA synthesis,0.76,0.016
+Tnfaip6,pro-resolving brake (TSG-6),-0.34,0.032
