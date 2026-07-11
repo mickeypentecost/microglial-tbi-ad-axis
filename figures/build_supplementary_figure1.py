@@ -69,9 +69,9 @@ def main():
     ax.text(0, ors[0] + 0.07, "P = 0.0022", ha="center", va="bottom",
             fontsize=8.3, color=ACC, fontweight="bold")
     ax.text(1, ors[1] + 0.07, "P = 0.70", ha="center", va="bottom", fontsize=8, color="0.4")
-    ax.text(2, 0.07, "0 variants", ha="center", va="bottom", fontsize=8, color=BRK)
-    ax.text(0.97, 0.06, "no enrichment (OR=1)", transform=ax.transAxes,
-            ha="right", va="bottom", fontsize=7.5, color="0.5")
+    ax.text(2, 0.10, "0 variants", ha="center", va="bottom", fontsize=8, color=BRK)
+    ax.text(0.02, 1.02, "no enrichment (OR=1)", transform=ax.get_yaxis_transform(),
+            ha="left", va="bottom", fontsize=7.5, color="0.5")
     stamp(ax, "A")
 
     # b: ChromBPNet scatter
@@ -116,7 +116,7 @@ def main():
                     ha="left" if z > 0 else "right", fontsize=8.5, color=c, fontweight="bold")
     ax.axvline(0, color="0.4", lw=0.8, ls="--")
     ax.axvline(1.96, color="0.6", lw=0.7, ls=":")
-    ax.text(1.96, 3.6, "P<0.05", fontsize=7, color="0.5", ha="center")
+    ax.text(2.12, 3.6, "P<0.05", fontsize=7, color="0.5", ha="center")
     ax.set_yticks(yy)
     ax.set_yticklabels([n for n, _, _, _ in zr], fontsize=9)
     ax.set_xlim(-2.4, 4.3)
