@@ -58,17 +58,21 @@ export const layout = {
 // [startFrame, endFrame] inclusive-ish; durations derived below.
 // Durations fit to the 145 wpm scratch narration (VO length + ~1.4s breathing;
 // Scene 4 floored at its 4-beat length). Re-fit when the real VO lands.
+// Fit to each scene's real VO length (VO + ~0.9s tail). Scene 4 kept at ~20s —
+// its four visual beats (scatter/forest → plaques → lesion) need the time.
+// Frames 0–29 are a 1s intro hold (background only) before Scene 1; the close
+// carries an extra 2s to fade fully to black.
 export const scenes = {
-  hook: { start: 0, end: 604 },
-  cellAndBuilt: { start: 605, end: 1481 },
-  data: { start: 1482, end: 2122 },
-  convergence: { start: 2123, end: 2722 },
-  genetics: { start: 2723, end: 3801 },
-  cd44Hub: { start: 3802, end: 4417 },
-  whyItMatters: { start: 4418, end: 5239 },
-  close: { start: 5240, end: 5549 },
+  hook: { start: 30, end: 521 }, // VO 15.3s  (after 1s intro hold)
+  cellAndBuilt: { start: 522, end: 1336 }, // VO 26.0s
+  data: { start: 1337, end: 1931 }, // VO 18.7s
+  convergence: { start: 1932, end: 2531 }, // VO 16.3s (visuals-driven, ~20s)
+  genetics: { start: 2532, end: 3502 }, // VO 31.2s (Scene5v2)
+  cd44Hub: { start: 3503, end: 4043 }, // VO 16.9s
+  whyItMatters: { start: 4044, end: 4776 }, // VO 23.3s
+  close: { start: 4777, end: 5136 }, // VO 8.5s + 2s outro fade
 } as const;
 
-export const TOTAL_FRAMES = 5550;
+export const TOTAL_FRAMES = 5137;
 
 export const dur = (s: { start: number; end: number }) => s.end - s.start + 1;

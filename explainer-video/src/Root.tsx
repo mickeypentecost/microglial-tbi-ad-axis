@@ -1,4 +1,4 @@
-import { AbsoluteFill, Sequence, Audio, staticFile } from "remotion";
+import { AbsoluteFill, Sequence, Audio, staticFile, useCurrentFrame, interpolate } from "remotion";
 import { Background } from "./components/Background";
 import { SceneFrame } from "./components/SceneFrame";
 import { Scene1Hook } from "./scenes/Scene1Hook";
@@ -12,14 +12,13 @@ import { Scene8Close } from "./scenes/Scene8Close";
 import { scenes, dur, TOTAL_FRAMES, layout } from "./theme";
 import { Composition } from "remotion";
 
+const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+const VO_LEAD = 8; // frames before a scene's narration starts (~0.27s)
+
 // A scene = its Sequence + optional narration + the scene, wrapped in SceneFrame
-// for the crossfade. Scene durations (theme.ts) are fit to a ~145 wpm read of the
-// narration in VIDEO_SCRIPT.md.
-//
-// Narration is OPTIONAL. The film renders silent as-is. To add a voice-over,
-// drop per-scene audio in public/vo/ (s1.wav … s8.wav) and pass its filename,
-// e.g. <Scene range={scenes.hook} vo="s1.wav"> — see README.
-const VO_LEAD = 8; // frames before narration starts (~0.27s)
+// for the crossfade. The film renders SILENT as-is; scene durations (theme.ts)
+// are fit to a ~145 wpm read of VIDEO_SCRIPT.md. To add a voice-over, drop
+// per-scene audio in public/vo/ (s1.wav … s8.wav) and pass vo="s1.wav".
 const Scene: React.FC<{
   range: { start: number; end: number };
   vo?: string;
@@ -35,32 +34,38 @@ const Scene: React.FC<{
   </Sequence>
 );
 
-const Explainer: React.FC = () => {
-  return (
-    <AbsoluteFill style={{ backgroundColor: "#0A0E1A" }}>
-      <Background />
-
-      <Scene range={scenes.hook}><Scene1Hook /></Scene>
-      <Scene range={scenes.cellAndBuilt}><Scene2Cell /></Scene>
-      <Scene range={scenes.data}><Scene3Data /></Scene>
-      <Scene range={scenes.convergence}><Scene4ConvergenceSplit /></Scene>
-      <Scene range={scenes.genetics}><Scene5Genetics /></Scene>
-      <Scene range={scenes.cd44Hub}><Scene6HubSplit /></Scene>
-      <Scene range={scenes.whyItMatters}><Scene7Why /></Scene>
-      <Scene range={scenes.close}><Scene8Close /></Scene>
-    </AbsoluteFill>
-  );
+// Final fade to black over the last ~1.3s of the film.
+const FadeToBlack: React.FC = () => {
+  const frame = useCurrentFrame();
+  const opacity = interpolate(frame, [TOTAL_FRAMES - 45, TOTAL_FRAMES - 6], [0, 1], clamp);
+  return <AbsoluteFill style={{ backgroundColor: "#000000", opacity, pointerEvents: "none" }} />;
 };
 
-export const RemotionRoot: React.FC = () => {
-  return (
-    <Composition
-      id="Explainer"
-      component={Explainer}
-      durationInFrames={TOTAL_FRAMES}
-      fps={layout.fps}
-      width={layout.width}
-      height={layout.height}
-    />
-  );
-};
+const Explainer: React.FC = () => (
+  <AbsoluteFill style={{ backgroundColor: "#0A0E1A" }}>
+    <Background />
+
+    {/* Frames 0–29 hold on the background as a 1s intro before Scene 1. */}
+    <Scene range={scenes.hook}><Scene1Hook /></Scene>
+    <Scene range={scenes.cellAndBuilt}><Scene2Cell /></Scene>
+    <Scene range={scenes.data}><Scene3Data /></Scene>
+    <Scene range={scenes.convergence}><Scene4ConvergenceSplit /></Scene>
+    <Scene range={scenes.genetics}><Scene5Genetics /></Scene>
+    <Scene range={scenes.cd44Hub}><Scene6HubSplit /></Scene>
+    <Scene range={scenes.whyItMatters}><Scene7Why /></Scene>
+    <Scene range={scenes.close}><Scene8Close /></Scene>
+
+    <FadeToBlack />
+  </AbsoluteFill>
+);
+
+export const RemotionRoot: React.FC = () => (
+  <Composition
+    id="Explainer"
+    component={Explainer}
+    durationInFrames={TOTAL_FRAMES}
+    fps={layout.fps}
+    width={layout.width}
+    height={layout.height}
+  />
+);
