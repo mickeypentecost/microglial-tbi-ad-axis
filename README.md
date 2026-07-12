@@ -2,6 +2,8 @@
 
 *Mickey Pentecost, PhD — Built with Claude · Life Sciences Hackathon (Researcher Track)*
 
+📹 **Watch the 3-minute explainer:** https://www.youtube.com/watch?v=i6Fc2_6tdlU
+
 **A cross-modality, cross-species test of whether the same microglial
 inflammatory program that traumatic brain injury (TBI) *installs* is the one
 that Alzheimer's disease (AD) risk alleles *predispose to* — computed entirely
