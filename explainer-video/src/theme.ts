@@ -63,16 +63,16 @@ export const layout = {
 // Frames 0–29 are a 1s intro hold (background only) before Scene 1; the close
 // carries an extra 2s to fade fully to black.
 export const scenes = {
-  hook: { start: 30, end: 521 }, // VO 15.3s  (after 1s intro hold)
-  cellAndBuilt: { start: 522, end: 1336 }, // VO 26.0s
-  data: { start: 1337, end: 1931 }, // VO 18.7s
-  convergence: { start: 1932, end: 2531 }, // VO 16.3s (visuals-driven, ~20s)
-  genetics: { start: 2532, end: 3502 }, // VO 31.2s (Scene5v2)
-  cd44Hub: { start: 3503, end: 4043 }, // VO 16.9s
-  whyItMatters: { start: 4044, end: 4776 }, // VO 23.3s
-  close: { start: 4777, end: 5136 }, // VO 8.5s + 2s outro fade
+  hook: { start: 30, end: 670 }, // VO 20.2s (Scene1v2), after 1s intro hold
+  cellAndBuilt: { start: 671, end: 1485 }, // VO 26.0s
+  data: { start: 1486, end: 2080 }, // VO 18.7s
+  convergence: { start: 2081, end: 2680 }, // VO 16.3s (visuals-driven, ~20s)
+  genetics: { start: 2681, end: 3651 }, // VO 31.2s (Scene5v2)
+  cd44Hub: { start: 3652, end: 4192 }, // VO 16.9s
+  whyItMatters: { start: 4193, end: 4925 }, // VO 23.3s
+  close: { start: 4926, end: 5285 }, // VO 8.5s + 2s outro fade
 } as const;
 
-export const TOTAL_FRAMES = 5137;
+export const TOTAL_FRAMES = 5286;
 
 export const dur = (s: { start: number; end: number }) => s.end - s.start + 1;
