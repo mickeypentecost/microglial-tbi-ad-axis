@@ -142,7 +142,7 @@ export const Scene1Hook: React.FC = () => {
   const hubR = hub * hubPulse;
 
   // Footer credit — appears, holds, then fades out (lower-third style).
-  const footerOp = interpolate(frame, [216, 240, 448, 472], [0, 1, 1, 0], clampBoth);
+  const footerOp = interpolate(frame, [216, 240, 590, 615], [0, 1, 1, 0], clampBoth);
   const footerY = interpolate(frame, [216, 240], [16, 0], { ...clampBoth, easing: easeOutCubic });
 
   return (
